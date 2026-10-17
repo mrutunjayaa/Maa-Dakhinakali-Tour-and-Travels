@@ -63,12 +63,28 @@ document.addEventListener('DOMContentLoaded', () => {
       let details = [];
       inputs.forEach(input => {
         if (input.value) {
-          const label = input.previousElementSibling?.textContent || input.getAttribute('name');
+          const segLabel = input.closest('.tp-msearch__seg')?.querySelector('.tp-msearch__seg-label')?.textContent;
+          const label = segLabel || input.previousElementSibling?.textContent || input.getAttribute('name');
           details.push(`${label}: ${input.value}`);
         }
       });
       const queryStr = details.join(' | ');
       openBookingModal(`Custom ${type} Search Inquiry`, `Interested in ${type} with details: ${queryStr}`);
+    });
+  });
+
+  // Route Swap Buttons
+  document.querySelectorAll('.tp-msearch__swap-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const panel = btn.closest('.tp-msearch__panel');
+      const fromInput = panel?.querySelector('[name="from_location"], [name="pickup_location"]');
+      const toInput = panel?.querySelector('[name="destination"], [name="trip_type"]');
+      if (fromInput && toInput) {
+        const temp = fromInput.value;
+        fromInput.value = toInput.value;
+        toInput.value = temp;
+      }
     });
   });
 
@@ -226,4 +242,103 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // 11. Interactive Click Shockwave & Ripple for Split Book Now Button
+  const splitBookBtns = document.querySelectorAll('.nav-book-split');
+  splitBookBtns.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      this.classList.remove('is-clicked');
+      void this.offsetWidth; // Force reflow
+      this.classList.add('is-clicked');
+
+      const rect = this.getBoundingClientRect();
+      const circle = document.createElement('span');
+      const diameter = Math.max(rect.width, rect.height) * 1.6;
+      const radius = diameter / 2;
+
+      circle.style.width = circle.style.height = `${diameter}px`;
+      circle.style.left = `${(e.clientX || (rect.left + rect.width / 2)) - rect.left - radius}px`;
+      circle.style.top = `${(e.clientY || (rect.top + rect.height / 2)) - rect.top - radius}px`;
+      circle.classList.add('book-ripple');
+
+      const oldRipple = this.querySelector('.book-ripple');
+      if (oldRipple) oldRipple.remove();
+
+      this.appendChild(circle);
+
+      setTimeout(() => {
+        circle.remove();
+        this.classList.remove('is-clicked');
+      }, 550);
+    });
+  });
+
+  // 12. Hero Scenic Photo Slideshow (10 Photos Auto-slide & Interactive)
+  const scenicSlider = document.getElementById('heroScenicSlider');
+  if (scenicSlider) {
+    const slides = scenicSlider.querySelectorAll('.tp-mhero__scenic-slide');
+    const dots = scenicSlider.querySelectorAll('.tp-mhero__dot');
+    const prevBtn = scenicSlider.querySelector('.tp-mhero__slider-btn--prev');
+    const nextBtn = scenicSlider.querySelector('.tp-mhero__slider-btn--next');
+    let currentIndex = 0;
+    let autoSlideTimer = null;
+
+    function goToSlide(index) {
+      if (slides.length === 0) return;
+      currentIndex = (index + slides.length) % slides.length;
+
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('is-active', i === currentIndex);
+      });
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('is-active', i === currentIndex);
+      });
+    }
+
+    function nextSlide() {
+      goToSlide(currentIndex + 1);
+    }
+
+    function prevSlide() {
+      goToSlide(currentIndex - 1);
+    }
+
+    function startAutoSlide() {
+      stopAutoSlide();
+      autoSlideTimer = setInterval(nextSlide, 3800);
+    }
+
+    function stopAutoSlide() {
+      if (autoSlideTimer) {
+        clearInterval(autoSlideTimer);
+        autoSlideTimer = null;
+      }
+    }
+
+    nextBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      nextSlide();
+      startAutoSlide();
+    });
+
+    prevBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      prevSlide();
+      startAutoSlide();
+    });
+
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', (e) => {
+        e.stopPropagation();
+        goToSlide(idx);
+        startAutoSlide();
+      });
+    });
+
+    scenicSlider.addEventListener('mouseenter', stopAutoSlide);
+    scenicSlider.addEventListener('mouseleave', startAutoSlide);
+
+    startAutoSlide();
+  }
 });
