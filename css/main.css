@@ -1621,10 +1621,16 @@ body.dark-theme .theme-toggle__knob {
 
 .home-section__head {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   margin-bottom: 36px;
-  gap: 20px;
+  gap: 16px;
+}
+
+.home-section__head > div {
+  width: 100%;
 }
 
 .home-section__title {
@@ -1636,13 +1642,315 @@ body.dark-theme .theme-toggle__knob {
 .home-section__lead {
   font-size: 1.05rem;
   color: var(--tripper-color-text-muted);
-  max-width: 660px;
-  margin: 0;
+  max-width: 880px;
+  margin: 0 auto;
 }
 
 /* -----------------------------------------
    DESTINATIONS GRID (home2-dgrid)
 ----------------------------------------- */
+#destinations,
+#tours,
+#cars,
+#experiences {
+  padding-top: 20px;
+  padding-block-start: 20px;
+}
+
+/* -----------------------------------------
+   ANIMATED HAND WIPE TITLE (Guided Tours & Journeys 7s Rotation)
+----------------------------------------- */
+.wipe-title-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 1.35em;
+  margin: 0 0 8px;
+  max-width: 100%;
+}
+
+.wipe-title-inner {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 64px;
+  padding-right: 64px;
+  white-space: normal;
+  perspective: 900px;
+}
+
+.wipe-text {
+  display: inline-block;
+  color: var(--tripper-color-text, #0f172a);
+  will-change: clip-path;
+}
+
+.wipe-text.is-erasing {
+  animation: wipeTextClipOut 1.2s cubic-bezier(0.35, 0, 0.25, 1) forwards;
+}
+
+@keyframes wipeTextClipOut {
+  0% {
+    clip-path: inset(0 0 0 0%);
+  }
+  100% {
+    clip-path: inset(0 0 0 100%);
+  }
+}
+
+.wipe-text.is-revealing {
+  animation: wipeTextClipBack 1.2s cubic-bezier(0.35, 0, 0.25, 1) forwards;
+}
+
+@keyframes wipeTextClipBack {
+  0% {
+    clip-path: inset(0 0 0 100%);
+  }
+  100% {
+    clip-path: inset(0 0 0 0%);
+  }
+}
+
+/* Tour Car Wiper Element - Always visible / parked */
+.wipe-car {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 60px;
+  height: 34px;
+  pointer-events: none;
+  z-index: 15;
+  opacity: 1;
+  visibility: visible;
+  transform-style: preserve-3d;
+}
+
+/* Car parked & waiting at left side */
+.wipe-car.is-parked {
+  left: 0;
+  transform: translateY(-50%) rotateY(0deg);
+}
+
+.wipe-car.is-parked .wipe-car__vehicle {
+  animation: carIdle 2.2s ease-in-out infinite alternate;
+}
+
+@keyframes carIdle {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-1.5px);
+  }
+  100% {
+    transform: translateY(0.5px);
+  }
+}
+
+/* Trip 1: Left to Right across text (Erasing) */
+.wipe-car.is-driving-out {
+  animation: wipeCarDriveOut 1.2s cubic-bezier(0.35, 0, 0.25, 1) forwards;
+}
+
+@keyframes wipeCarDriveOut {
+  0% {
+    left: 0px;
+    transform: translateY(-50%) rotateY(0deg);
+  }
+  100% {
+    left: calc(100% - 60px);
+    transform: translateY(-50%) rotateY(0deg);
+  }
+}
+
+/* Roundabout U-Turn at the right edge */
+.wipe-car.is-turning-round {
+  animation: wipeCarRoundUTurn 0.75s ease-in-out forwards;
+}
+
+@keyframes wipeCarRoundUTurn {
+  0% {
+    left: calc(100% - 60px);
+    transform: translateY(-50%) rotateY(0deg) translateY(0);
+  }
+  25% {
+    left: calc(100% - 25px);
+    transform: translateY(-50%) rotateY(45deg) translateY(-15px) rotate(-6deg);
+  }
+  50% {
+    left: calc(100% - 12px);
+    transform: translateY(-50%) rotateY(90deg) translateY(-20px) scale(1.06);
+  }
+  75% {
+    left: calc(100% - 35px);
+    transform: translateY(-50%) rotateY(140deg) translateY(-10px) rotate(6deg);
+  }
+  100% {
+    left: calc(100% - 60px);
+    transform: translateY(-50%) rotateY(180deg) translateY(0);
+  }
+}
+
+/* Trip 2: Right to Left (Ulta return, revealing new title) */
+.wipe-car.is-driving-back {
+  animation: wipeCarDriveBack 1.2s cubic-bezier(0.35, 0, 0.25, 1) forwards;
+}
+
+@keyframes wipeCarDriveBack {
+  0% {
+    left: calc(100% - 60px);
+    transform: translateY(-50%) rotateY(180deg);
+  }
+  100% {
+    left: 0px;
+    transform: translateY(-50%) rotateY(180deg);
+  }
+}
+
+/* Parking turn at left spot to face forward */
+.wipe-car.is-parking-turn {
+  animation: wipeCarParkTurn 0.35s ease-in-out forwards;
+}
+
+@keyframes wipeCarParkTurn {
+  0% {
+    left: 0px;
+    transform: translateY(-50%) rotateY(180deg);
+  }
+  100% {
+    left: 0px;
+    transform: translateY(-50%) rotateY(0deg);
+  }
+}
+
+.wipe-car__vehicle {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: drop-shadow(0 4px 10px rgba(13, 148, 136, 0.3));
+}
+
+.wipe-car.is-driving-out .wipe-car__vehicle,
+.wipe-car.is-turning-round .wipe-car__vehicle,
+.wipe-car.is-driving-back .wipe-car__vehicle {
+  animation: wipeCarSuspension 0.16s ease-in-out infinite alternate;
+}
+
+@keyframes wipeCarSuspension {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-1.5px) rotate(0.6deg);
+  }
+  100% {
+    transform: translateY(1px) rotate(-0.4deg);
+  }
+}
+
+.wipe-car__svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+/* Spinning wheels during driving & U-turn */
+.wipe-car.is-driving-out .wipe-car__wheel,
+.wipe-car.is-turning-round .wipe-car__wheel,
+.wipe-car.is-driving-back .wipe-car__wheel {
+  animation: wheelSpin 0.2s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes wheelSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Smoke puff from exhaust */
+.wipe-car__smoke {
+  position: absolute;
+  left: -12px;
+  top: 55%;
+  transform: translateY(-50%);
+  font-size: 0.95rem;
+  pointer-events: none;
+  animation: carSmokePuff 0.2s ease-in-out infinite alternate;
+}
+
+@keyframes carSmokePuff {
+  0% {
+    transform: translateY(-50%) scale(0.7) translateX(2px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-50%) scale(1.15) translateX(-4px);
+    opacity: 0.95;
+  }
+}
+
+@media (max-width: 680px) {
+  .wipe-title-inner {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+  .wipe-car {
+    width: 46px;
+    height: 26px;
+  }
+  @keyframes wipeCarDriveOut {
+    0% {
+      left: 0px;
+      transform: translateY(-50%) rotateY(0deg);
+    }
+    100% {
+      left: calc(100% - 46px);
+      transform: translateY(-50%) rotateY(0deg);
+    }
+  }
+  @keyframes wipeCarRoundUTurn {
+    0% {
+      left: calc(100% - 46px);
+      transform: translateY(-50%) rotateY(0deg) translateY(0);
+    }
+    25% {
+      left: calc(100% - 20px);
+      transform: translateY(-50%) rotateY(45deg) translateY(-10px) rotate(-6deg);
+    }
+    50% {
+      left: calc(100% - 8px);
+      transform: translateY(-50%) rotateY(90deg) translateY(-14px) scale(1.05);
+    }
+    75% {
+      left: calc(100% - 26px);
+      transform: translateY(-50%) rotateY(140deg) translateY(-6px) rotate(6deg);
+    }
+    100% {
+      left: calc(100% - 46px);
+      transform: translateY(-50%) rotateY(180deg) translateY(0);
+    }
+  }
+  @keyframes wipeCarDriveBack {
+    0% {
+      left: calc(100% - 46px);
+      transform: translateY(-50%) rotateY(180deg);
+    }
+    100% {
+      left: 0px;
+      transform: translateY(-50%) rotateY(180deg);
+    }
+  }
+}
+
 .home2-dgrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -3113,7 +3421,10 @@ body.dark-theme .theme-toggle__knob {
 ----------------------------------------- */
 .car-tabs {
   display: flex;
-  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
   margin-bottom: 28px;
   overflow-x: auto;
   padding-bottom: 4px;
@@ -3286,13 +3597,15 @@ body.dark-theme .theme-toggle__knob {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
   margin-top: auto;
 }
 
 .hotel-card__price, .car-card__price {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 800;
   color: var(--tripper-color-text);
+  line-height: 1.2;
 }
 
 .hotel-card__price span, .car-card__price span {
@@ -3304,6 +3617,7 @@ body.dark-theme .theme-toggle__knob {
 .hotel-card__book, .car-card__book {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   font-size: 0.88rem;
   font-weight: 700;
@@ -3312,6 +3626,20 @@ body.dark-theme .theme-toggle__knob {
   padding: 9px 18px;
   border-radius: var(--tripper-radius-pill);
   transition: all var(--tripper-transition);
+  white-space: nowrap;
+  flex-shrink: 0;
+  cursor: pointer;
+  border: none;
+}
+
+.hotel-card__book span, .car-card__book span {
+  white-space: nowrap;
+}
+
+.hotel-card__book svg, .car-card__book svg {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
 }
 
 .hotel-card__book:hover, .car-card__book:hover {
@@ -3319,9 +3647,221 @@ body.dark-theme .theme-toggle__knob {
   transform: translateY(-1px);
 }
 
+.fleet-view-more {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 36px;
+  width: 100%;
+}
+
+.fleet-view-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 34px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: var(--tripper-radius-pill);
+  background: linear-gradient(135deg, var(--tripper-color-primary) 0%, #009384 100%);
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(0, 184, 169, 0.28);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  text-decoration: none;
+  border: none;
+}
+
+.fleet-view-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0, 184, 169, 0.4);
+  color: #fff;
+}
+
+.fleet-view-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.fleet-view-btn:hover svg {
+  transform: translateX(4px);
+}
+
 /* -----------------------------------------
-   EXPERIENCES / THINGS TO DO (exp-card)
+   EXPERIENCES / 4 CHAR DHAM CAROUSEL (exp-card)
 ----------------------------------------- */
+.exp-section-head {
+  display: block;
+  text-align: center;
+  margin-bottom: 34px;
+}
+
+/* ==========================================================================
+   CHAR DHAM MARQUEE HEADING (Left to Right Infinite Animation)
+   ========================================================================== */
+.exp-marquee-wrap {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin: 10px 0 14px 0;
+  padding: 10px 0;
+  white-space: nowrap;
+  mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  user-select: none;
+}
+
+.exp-marquee-track {
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+  /* Right to Left animation: starts from 0% to -50% */
+  animation: expMarqueeRightToLeft 32s linear infinite;
+  will-change: transform;
+}
+
+.exp-marquee-wrap:hover .exp-marquee-track {
+  animation-play-state: paused;
+}
+
+.exp-marquee-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+  padding-right: 28px;
+}
+
+.exp-marquee-title {
+  margin: 0;
+  display: inline;
+  font-family: var(--tripper-font-heading);
+  /* 30% larger text size */
+  font-size: clamp(1.82rem, 3.38vw, 2.8rem);
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--tripper-color-text);
+  line-height: 1.25;
+}
+
+.exp-marquee-accent {
+  background: linear-gradient(135deg, #00b8a9 0%, #ff7a00 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+  text-shadow: 0 2px 14px rgba(0, 184, 169, 0.18);
+}
+
+.exp-marquee-sep,
+.exp-marquee-star {
+  color: #ff9f1c;
+  font-size: 1.1em;
+  filter: drop-shadow(0 2px 6px rgba(255, 159, 28, 0.45));
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Keyframes: Move Right to Left smoothly and infinitely */
+@keyframes expMarqueeRightToLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Dark Theme Support */
+body.dark-theme .exp-marquee-title {
+  color: #ffffff;
+}
+
+body.dark-theme .exp-marquee-accent {
+  background: linear-gradient(135deg, #00dfcb 0%, #ffa043 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.exp-carousel-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.exp-carousel-viewport {
+  overflow: hidden;
+  width: 100%;
+  padding: 10px 4px 18px 4px;
+  margin: -10px -4px -18px -4px;
+}
+
+.exp-carousel-track {
+  display: flex;
+  gap: 26px;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+/* 3 visible cards on screen */
+.exp-carousel__item {
+  flex: 0 0 calc((100% - 2 * 26px) / 3);
+  max-width: calc((100% - 2 * 26px) / 3);
+  box-sizing: border-box;
+}
+
+@media (max-width: 991px) {
+  .exp-carousel__item {
+    flex: 0 0 calc((100% - 26px) / 2);
+    max-width: calc((100% - 26px) / 2);
+  }
+}
+
+@media (max-width: 639px) {
+  .exp-carousel__item {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .exp-section-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Dots Indicator */
+.exp-carousel__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.exp-carousel__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: var(--tripper-radius-pill);
+  background: var(--tripper-color-border);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.exp-carousel__dot.is-active {
+  width: 32px;
+  background: var(--tripper-color-primary);
+}
+
+/* Dark mode for carousel */
+body.dark-theme .exp-carousel__dot {
+  background: #1e3e44;
+}
+
+body.dark-theme .exp-carousel__dot.is-active {
+  background: var(--tripper-color-primary);
+}
+
 .exp-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -3578,6 +4118,8 @@ body.dark-theme .theme-toggle__knob {
   margin: 0;
 }
 
+
+
 /* -----------------------------------------
    HOME PROOF & STATISTICS
 ----------------------------------------- */
@@ -3699,6 +4241,211 @@ body.dark-theme .theme-toggle__knob {
   width: 15px;
   height: 15px;
 }
+
+/* ==========================================================================
+   HOLD-TO-CALL INTERACTIVE BUTTON (PURI TEAM - RIGHT TO LEFT FILL)
+   ========================================================================== */
+.hold-call-btn-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 100%; /* Stretch full box width to right edge */
+  margin-top: 10px;
+}
+
+.hold-call-btn {
+  position: relative;
+  width: 100%;
+  min-height: 72px;
+  padding: 12px 28px 12px 18px;
+  border-radius: var(--tripper-radius-pill);
+  border: 2px solid var(--tripper-color-primary);
+  background: #ffffff;
+  color: var(--tripper-color-text);
+  cursor: pointer;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  box-shadow: 0 10px 28px -6px rgba(0, 184, 169, 0.28);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s ease,
+              border-color 0.2s ease;
+  outline: none;
+  touch-action: manipulation;
+}
+
+.hold-call-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px -6px rgba(0, 184, 169, 0.38);
+}
+
+.hold-call-btn:active,
+.hold-call-btn.is-holding {
+  transform: scale(0.985);
+  box-shadow: 0 6px 18px -4px rgba(0, 184, 169, 0.45);
+}
+
+/* Progress Fill Layer: Fills from LEFT TO RIGHT */
+.hold-call-btn__progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  background: linear-gradient(90deg, #00b8a9 0%, #00d5c3 60%, #ff9f1c 100%);
+  transition: width 0.05s linear;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: inherit;
+}
+
+.hold-call-btn.is-completed .hold-call-btn__progress {
+  width: 100% !important;
+  background: #00b8a9;
+  transition: width 0.15s ease;
+}
+
+/* Inner content container */
+.hold-call-btn__inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+}
+
+.hold-call-btn__icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--tripper-color-primary);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 184, 169, 0.4);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.2s ease;
+}
+
+.hold-call-btn__icon-box svg {
+  width: 22px;
+  height: 22px;
+}
+
+.hold-call-icon-phone {
+  display: block;
+}
+
+.hold-call-icon-arrow {
+  display: none;
+}
+
+.hold-call-btn.is-holding .hold-call-btn__icon-box {
+  transform: scale(1.12) rotate(-10deg);
+  background: #ff9f1c;
+}
+
+.hold-call-btn.is-completed .hold-call-btn__icon-box {
+  transform: scale(1.2);
+  background: #12b76a;
+}
+
+.hold-call-btn__text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  flex: 1;
+  transition: color 0.2s ease;
+}
+
+.hold-call-btn__title {
+  font-family: var(--tripper-font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--tripper-color-text);
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  transition: color 0.15s ease;
+}
+
+.hold-call-btn__hint {
+  font-size: 0.82rem;
+  color: var(--tripper-color-text-muted);
+  font-weight: 500;
+  margin-top: 2px;
+  transition: color 0.15s ease;
+}
+
+.hold-call-btn__badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 5px 12px;
+  border-radius: var(--tripper-radius-pill);
+  background: rgba(0, 184, 169, 0.12);
+  color: var(--tripper-color-primary-text);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+/* When holding or completed, make inner text prominent white */
+.hold-call-btn.is-holding .hold-call-btn__title,
+.hold-call-btn.is-completed .hold-call-btn__title {
+  color: #0b2e32;
+}
+
+.hold-call-btn.is-holding .hold-call-btn__hint,
+.hold-call-btn.is-completed .hold-call-btn__hint {
+  color: #0b2e32;
+  font-weight: 600;
+}
+
+.hold-call-btn.is-holding .hold-call-btn__badge,
+.hold-call-btn.is-completed .hold-call-btn__badge {
+  background: rgba(255, 255, 255, 0.95);
+  color: #00776b;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.hold-call-subtext {
+  font-size: 0.78rem;
+  color: var(--tripper-color-text-muted);
+  font-weight: 500;
+  padding-left: 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Dark Theme Support */
+body.dark-theme .hold-call-btn {
+  background: #10262a;
+  border-color: #1b494f;
+}
+
+body.dark-theme .hold-call-btn__title {
+  color: #ffffff;
+}
+
+body.dark-theme .hold-call-btn__hint {
+  color: #8fa8a6;
+}
+
+body.dark-theme .hold-call-btn__badge {
+  background: rgba(0, 184, 169, 0.2);
+  color: #00dfcb;
+}
+
+body.dark-theme .hold-call-subtext {
+  color: #8fa8a6;
+}
+
 
 /* -----------------------------------------
    TESTIMONIALS / REVIEWS
@@ -4426,7 +5173,8 @@ body.dark-theme .theme-toggle__knob {
   }
   .home-section__head {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
   }
 }
 
@@ -5060,3 +5808,218 @@ body.dark-theme .about-btn-call-val {
 body.dark-theme .about-btn-call-lbl {
   color: #8fa8a6;
 }
+
+/* ==========================================================================
+   404 ERROR PAGE WITH GLOWING RED TRAFFIC LIGHT
+   ========================================================================== */
+.error-hero {
+  min-height: calc(100vh - 180px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px 80px 20px;
+  background: radial-gradient(circle at center 40%, rgba(255, 68, 56, 0.08) 0%, transparent 65%), var(--tripper-color-bg);
+  text-align: center;
+}
+
+.error-hero__inner {
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Traffic Light Component */
+.traffic-light-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.traffic-light {
+  width: 90px;
+  padding: 16px 14px;
+  background: linear-gradient(145deg, #1f282a, #0b1112);
+  border-radius: 26px;
+  border: 3.5px solid #334448;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35),
+              inset 0 2px 4px rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Visor / Hood on top of each lamp */
+.traffic-light__unit {
+  position: relative;
+  width: 52px;
+  height: 52px;
+}
+
+.traffic-light__visor {
+  position: absolute;
+  top: -4px;
+  left: 2px;
+  right: 2px;
+  height: 12px;
+  border-radius: 12px 12px 0 0;
+  background: #090e0f;
+  z-index: 3;
+}
+
+.traffic-light__lamp {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Realistic Lamp Textures */
+.traffic-light__lamp::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  width: 14px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: rotate(-30deg);
+}
+
+/* RED LIGHT - ACTIVE & GLOWING */
+.traffic-light__lamp--red {
+  background: radial-gradient(circle at 35% 35%, #ff8a80 0%, #ff1744 45%, #b71c1c 100%);
+  box-shadow: 0 0 22px rgba(255, 23, 68, 0.95),
+              0 0 55px rgba(255, 23, 68, 0.65),
+              inset 0 0 10px rgba(255, 255, 255, 0.5);
+  animation: trafficRedBlink 2.6s infinite ease-in-out;
+}
+
+/* Yellow Lamp (Inactive) */
+.traffic-light__lamp--yellow {
+  background: radial-gradient(circle at 35% 35%, #524314 0%, #2f2508 100%);
+  opacity: 0.35;
+}
+
+/* Green Lamp (Inactive) */
+.traffic-light__lamp--green {
+  background: radial-gradient(circle at 35% 35%, #134231 0%, #082118 100%);
+  opacity: 0.35;
+}
+
+/* Traffic Light Pole */
+.traffic-light__pole {
+  width: 16px;
+  height: 48px;
+  background: linear-gradient(90deg, #2a383b, #151d1e 70%, #0e1415);
+  border-radius: 0 0 6px 6px;
+}
+
+.traffic-light__base {
+  width: 50px;
+  height: 8px;
+  background: #151d1e;
+  border-radius: 4px;
+}
+
+@keyframes trafficRedBlink {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 23, 68, 0.8),
+                0 0 45px rgba(255, 23, 68, 0.5);
+    filter: brightness(1);
+  }
+  50% {
+    box-shadow: 0 0 32px rgba(255, 23, 68, 1),
+                0 0 75px rgba(255, 23, 68, 0.85);
+    filter: brightness(1.22);
+  }
+}
+
+/* 404 Typography */
+.error-code {
+  font-family: var(--tripper-font-heading);
+  font-size: clamp(4.5rem, 11vw, 8.5rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: #ff334b;
+  text-shadow: 0 12px 30px rgba(255, 51, 75, 0.25);
+  margin-bottom: 12px;
+}
+
+.error-title {
+  font-family: var(--tripper-font-heading);
+  font-size: clamp(1.4rem, 3.2vw, 2.2rem);
+  font-weight: 800;
+  color: var(--tripper-color-text);
+  margin-bottom: 14px;
+}
+
+.error-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: var(--tripper-radius-pill);
+  background: rgba(255, 23, 68, 0.12);
+  color: #d50000;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.error-badge__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #ff1744;
+  box-shadow: 0 0 8px #ff1744;
+}
+
+.error-desc {
+  font-size: 1.05rem;
+  color: var(--tripper-color-text-muted);
+  line-height: 1.65;
+  margin-bottom: 34px;
+  max-width: 540px;
+}
+
+.error-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Dark Theme */
+body.dark-theme .error-hero {
+  background: radial-gradient(circle at center 40%, rgba(255, 68, 56, 0.12) 0%, transparent 65%), #0c181a;
+}
+
+body.dark-theme .error-title {
+  color: #ffffff;
+}
+
+body.dark-theme .error-desc {
+  color: #92abb0;
+}
+
+body.dark-theme .error-badge {
+  background: rgba(255, 23, 68, 0.2);
+  color: #ff616f;
+}
+
+
+
+

@@ -154,9 +154,25 @@ document.addEventListener('DOMContentLoaded', () => {
       carTabs.forEach(t => t.classList.remove('is-active'));
       tab.classList.add('is-active');
 
-      const filter = tab.getAttribute('data-filter');
+      const filter = (tab.getAttribute('data-filter') || 'all').toLowerCase();
       carItems.forEach(item => {
-        if (filter === 'all' || item.getAttribute('data-cat') === filter) {
+        const cat = (item.getAttribute('data-cat') || '').toLowerCase();
+        const catList = cat.split(/\s+/);
+        let isMatch = false;
+
+        if (filter === 'all') {
+          isMatch = true;
+        } else if (filter === 'car' || filter === 'cars') {
+          isMatch = catList.includes('car') || catList.includes('cars') || catList.includes('suv') || catList.includes('sedan');
+        } else if (filter === 'bike' || filter === 'bikes') {
+          isMatch = catList.includes('bike') || catList.includes('bikes');
+        } else if (filter === 'scooter' || filter === 'scooters') {
+          isMatch = catList.includes('scooter') || catList.includes('scooters');
+        } else {
+          isMatch = catList.includes(filter);
+        }
+
+        if (isMatch) {
           item.style.display = 'block';
         } else {
           item.style.display = 'none';
@@ -715,4 +731,363 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  // 17. Rotating Tour Titles with Hand-Wipe Erase Animation (7s Interval)
+  // 17. Rotating Tour Titles with Tour Car Erase Animation (7s Interval)
+  initTitleWiper();
+
+  function initTitleWiper() {
+    const wipeText = document.getElementById('wipeText');
+    const wipeCar = document.getElementById('wipeCar') || document.getElementById('wipeHand');
+    if (!wipeText || !wipeCar) return;
+
+    const tourTitles = [
+      "Guided Tours & Journeys",
+      "Puri Jagannath Dham Yatra",
+      "Odisha Heritage & Temple Tours",
+      "Kashmir Valley & Snow Escapes",
+      "Kerala Backwaters & Hill Stations",
+      "Royal Rajasthan Desert Safaris",
+      "Custom Family Holiday Packages",
+      "Spiritual & Pilgrimage Darshan",
+      "Golden Triangle & Sun Temple",
+      "All-India Scenic Road Trips"
+    ];
+
+    let currentIndex = 0;
+
+    // Car starts parked at the left waiting
+    wipeCar.className = 'wipe-car is-parked';
+
+    // Round-trip Car Animation with Roundabout U-Turn:
+    // 1. Drives Left to Right erasing previous title (1.2s)
+    // 2. Roundabout U-turn loop arc at right edge (750ms)
+    // 3. Drives Right to Left (Ulta return) revealing the new title (1.2s)
+    // 4. Turns to face forward at parking spot (350ms)
+    // 5. Parks and waits!
+    function roundTripCar(callback) {
+      // Phase 1: Drive Out Left to Right
+      wipeCar.className = 'wipe-car is-driving-out';
+      wipeText.className = 'wipe-text is-erasing';
+
+      setTimeout(() => {
+        // Phase 2: U-Turn Round Cut at right edge
+        wipeCar.className = 'wipe-car is-turning-round';
+        wipeText.className = 'wipe-text';
+
+        // Prepare new word (hidden initially from left)
+        currentIndex = (currentIndex + 1) % tourTitles.length;
+        wipeText.textContent = tourTitles[currentIndex];
+        wipeText.style.clipPath = 'inset(0 0 0 100%)';
+
+        setTimeout(() => {
+          // Phase 3: Drive Back Right to Left (Ulta return, revealing new title)
+          wipeCar.className = 'wipe-car is-driving-back';
+          wipeText.className = 'wipe-text is-revealing';
+
+          setTimeout(() => {
+            // Phase 4: Arrived at left side! Turn to face forward
+            wipeCar.className = 'wipe-car is-parking-turn';
+            wipeText.className = 'wipe-text';
+            wipeText.style.clipPath = 'none';
+
+            setTimeout(() => {
+              // Phase 5: Parked and waiting!
+              wipeCar.className = 'wipe-car is-parked';
+              if (callback) callback();
+            }, 350);
+          }, 1200);
+        }, 750);
+      }, 1200);
+    }
+
+    // Main cycle: car waits, then takes round-trip when time comes
+    function step() {
+      roundTripCar(() => {
+        // Car waits/parks for 5.5 seconds, then drives again!
+        setTimeout(step, 5500);
+      });
+    }
+
+    // Start first trip after initial 5.5s viewing
+    setTimeout(step, 5500);
+  }
+
+  // 17. Char Dham 4-Temples Infinite Carousel (Shows 3 on screen, auto-loops every 5 seconds)
+  function initCharDhamCarousel() {
+    const wrapper = document.getElementById('expCarouselWrapper');
+    const track = document.getElementById('expCarouselTrack');
+    const prevBtn = document.getElementById('expPrevBtn');
+    const nextBtn = document.getElementById('expNextBtn');
+    const dotsContainer = document.getElementById('expCarouselDots');
+    if (!track || !wrapper) return;
+
+    const originalItems = Array.from(track.querySelectorAll('.exp-carousel__item'));
+    const totalOriginal = originalItems.length; // 4
+    if (totalOriginal === 0) return;
+
+    // Clone 3 items before and 3 items after for infinite seamless loop
+    const cloneCount = 3;
+    for (let i = totalOriginal - cloneCount; i < totalOriginal; i++) {
+      const clone = originalItems[i].cloneNode(true);
+      clone.classList.add('is-clone');
+      clone.setAttribute('aria-hidden', 'true');
+      track.insertBefore(clone, track.firstChild);
+    }
+    for (let i = 0; i < cloneCount; i++) {
+      const clone = originalItems[i].cloneNode(true);
+      clone.classList.add('is-clone');
+      clone.setAttribute('aria-hidden', 'true');
+      track.appendChild(clone);
+    }
+
+    let currentIndex = cloneCount; // points to 1st real item (index 0)
+    let isTransitioning = false;
+    let autoPlayTimer = null;
+    const gap = 26; // match CSS gap
+
+    function getCardWidth() {
+      const firstCard = track.querySelector('.exp-carousel__item');
+      return firstCard ? firstCard.getBoundingClientRect().width : 340;
+    }
+
+    function updateTrackPosition(withTransition = true) {
+      const cardWidth = getCardWidth();
+      const moveDistance = currentIndex * (cardWidth + gap);
+      track.style.transition = withTransition ? 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)' : 'none';
+      track.style.transform = `translateX(-${moveDistance}px)`;
+      updateDots();
+    }
+
+    function updateDots() {
+      const realIndex = (currentIndex - cloneCount) % totalOriginal;
+      const normalizedIndex = (realIndex + totalOriginal) % totalOriginal;
+      const dots = dotsContainer ? dotsContainer.querySelectorAll('.exp-carousel__dot') : [];
+      dots.forEach((dot, idx) => {
+        if (idx === normalizedIndex) {
+          dot.classList.add('is-active');
+        } else {
+          dot.classList.remove('is-active');
+        }
+      });
+    }
+
+    function moveToNext() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      currentIndex++;
+      updateTrackPosition(true);
+    }
+
+    function moveToPrev() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      currentIndex--;
+      updateTrackPosition(true);
+    }
+
+    track.addEventListener('transitionend', () => {
+      isTransitioning = false;
+      // Infinite loop boundary jump
+      if (currentIndex >= cloneCount + totalOriginal) {
+        currentIndex = cloneCount; // Jump seamlessly back to real 1st item
+        updateTrackPosition(false);
+      } else if (currentIndex < cloneCount) {
+        currentIndex = cloneCount + totalOriginal - 1; // Jump seamlessly to real last item
+        updateTrackPosition(false);
+      }
+    });
+
+    // Auto Play (5 seconds interval)
+    function startAutoPlay() {
+      stopAutoPlay();
+      autoPlayTimer = setInterval(() => {
+        moveToNext();
+      }, 5000);
+    }
+
+    function stopAutoPlay() {
+      if (autoPlayTimer) {
+        clearInterval(autoPlayTimer);
+        autoPlayTimer = null;
+      }
+    }
+
+    // Pause on hover, resume on mouseleave
+    wrapper.addEventListener('mouseenter', stopAutoPlay);
+    wrapper.addEventListener('mouseleave', startAutoPlay);
+
+    // Prev / Next button clicks
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        stopAutoPlay();
+        moveToNext();
+        startAutoPlay();
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        stopAutoPlay();
+        moveToPrev();
+        startAutoPlay();
+      });
+    }
+
+    // Dot click listeners
+    if (dotsContainer) {
+      dotsContainer.addEventListener('click', (e) => {
+        const dot = e.target.closest('.exp-carousel__dot');
+        if (!dot) return;
+        const targetIndex = parseInt(dot.getAttribute('data-index'), 10);
+        if (isNaN(targetIndex)) return;
+        stopAutoPlay();
+        currentIndex = cloneCount + targetIndex;
+        updateTrackPosition(true);
+        startAutoPlay();
+      });
+    }
+
+    // Window resize recalculation
+    window.addEventListener('resize', () => {
+      updateTrackPosition(false);
+    });
+
+    // Touch / Swipe support
+    let startX = 0;
+    let isDragging = false;
+
+    track.addEventListener('touchstart', (e) => {
+      stopAutoPlay();
+      startX = e.touches[0].clientX;
+      isDragging = true;
+    }, { passive: true });
+
+    track.addEventListener('touchend', (e) => {
+      if (!isDragging) return;
+      isDragging = false;
+      const endX = e.changedTouches[0].clientX;
+      const diffX = endX - startX;
+      if (diffX < -40) {
+        moveToNext();
+      } else if (diffX > 40) {
+        moveToPrev();
+      }
+      startAutoPlay();
+    }, { passive: true });
+
+    // Re-bind booking buttons on clones
+    track.querySelectorAll('.exp-card__cta').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const title = btn.getAttribute('data-title') || 'Char Dham Darshan';
+        const price = btn.getAttribute('data-price') || '';
+        if (typeof openBookingModal === 'function') {
+          openBookingModal(title, price ? `Package price: ${price}` : '');
+        }
+      });
+    });
+
+    // Initial positioning & start 5s autoplay
+    setTimeout(() => {
+      updateTrackPosition(false);
+      startAutoPlay();
+    }, 100);
+  }
+
+  initCharDhamCarousel();
+
+  // ==========================================
+  // HOLD-TO-CALL BUTTON (RIGHT TO LEFT FILL & REDIRECT)
+  // ==========================================
+  function initHoldToCallButton() {
+    const btn = document.getElementById('holdCallPuriBtn');
+    const progress = document.getElementById('holdCallProgress');
+    const title = document.getElementById('holdCallBtnTitle');
+    const hint = document.getElementById('holdCallBtnHint');
+    if (!btn || !progress) return;
+
+    const HOLD_DURATION_MS = 1400; // Time needed to hold before call triggers
+    let holdStartTime = null;
+    let animFrameId = null;
+    let isHolding = false;
+    let isTriggered = false;
+
+    function startHold(e) {
+      if (isTriggered) return;
+      isHolding = true;
+      holdStartTime = performance.now();
+      btn.classList.add('is-holding');
+      if (hint) hint.textContent = 'Keep Holding... Connecting';
+
+      function step(now) {
+        if (!isHolding) return;
+        const elapsed = now - holdStartTime;
+        const pct = Math.min(100, (elapsed / HOLD_DURATION_MS) * 100);
+
+        // Fill right to left (increasing width from right edge)
+        progress.style.width = pct + '%';
+
+        if (pct >= 100) {
+          triggerCall();
+        } else {
+          animFrameId = requestAnimationFrame(step);
+        }
+      }
+
+      animFrameId = requestAnimationFrame(step);
+    }
+
+    function cancelHold() {
+      if (isTriggered) return;
+      isHolding = false;
+      if (animFrameId) cancelAnimationFrame(animFrameId);
+      btn.classList.remove('is-holding');
+      progress.style.width = '0%';
+      if (hint) hint.textContent = 'Press & Hold to Connect Call';
+    }
+
+    function triggerCall() {
+      isTriggered = true;
+      isHolding = false;
+      btn.classList.remove('is-holding');
+      btn.classList.add('is-completed');
+      progress.style.width = '100%';
+      if (title) title.textContent = 'Connecting Call...';
+      if (hint) hint.textContent = 'Calling +91 8144684608 Now';
+
+      // Haptic feedback vibration if supported on mobile
+      if (navigator.vibrate) {
+        navigator.vibrate([80, 40, 120]);
+      }
+
+      // Small delay for smooth visual satisfaction, then redirect to call
+      setTimeout(() => {
+        window.location.href = 'tel:8144684608';
+        // Reset state after 3 seconds so user can use again
+        setTimeout(() => {
+          isTriggered = false;
+          btn.classList.remove('is-completed');
+          progress.style.width = '0%';
+          if (title) title.textContent = 'Contact Our Puri Team';
+          if (hint) hint.textContent = 'Press & Hold to Connect Call';
+        }, 3000);
+      }, 250);
+    }
+
+    // Pointer events (handles Mouse + Touch smoothly without duplicate triggers)
+    btn.addEventListener('pointerdown', startHold);
+    window.addEventListener('pointerup', cancelHold);
+    btn.addEventListener('pointercancel', cancelHold);
+    btn.addEventListener('pointerleave', cancelHold);
+
+    // Prevent context menu on long press
+    btn.addEventListener('contextmenu', (e) => e.preventDefault());
+  }
+
+  initHoldToCallButton();
 });
+
+
+
+
+

@@ -115,13 +115,13 @@
       <!-- Primary Navigation with Mega Menus -->
       <nav class="main-navigation" id="site-navigation" aria-label="Primary Navigation">
         <ul class="primary-menu">
-          <li class="current"><a href="#page">Home</a></li>
-          <li><a href="#tours">Tours package</a></li>
-          <li><a href="#cars">Cars &amp; Bike rental</a></li>
-          <li><a href="#destinations">Destinations</a></li>
-          <li><a href="#experiences">Experiences</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li class="current"><a href="index.html">Home</a></li>
+          <li><a href="tours.html">Tours package</a></li>
+          <li><a href="cars.html">Cars &amp; Bike rental</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="experiences.html">Experiences</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
 
@@ -829,27 +829,66 @@
     <section class="home-section tripper-container home-section--tint" id="tours">
       <div class="home-section__head">
         <div>
-          <span class="tripper-eyebrow">Handcrafted Packages</span>
-          <h2 class="home-section__title">Guided Tours &amp; Journeys</h2>
+          <h2 class="home-section__title wipe-title-wrap">
+            <span class="wipe-title-inner">
+              <span class="wipe-car is-parked" id="wipeCar" aria-hidden="true">
+                <span class="wipe-car__vehicle">
+                  <svg class="wipe-car__svg" viewBox="0 0 80 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="headlightGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#fef08a" stop-opacity="0.9"/>
+                        <stop offset="100%" stop-color="#fef08a" stop-opacity="0"/>
+                      </linearGradient>
+                    </defs>
+                    <!-- Headlight Beam -->
+                    <polygon points="70,26 92,19 92,35 70,30" fill="url(#headlightGlow)"/>
+                    <!-- Car Body / Chassis -->
+                    <g class="wipe-car__chassis">
+                      <!-- Roof Carrier & Luggage -->
+                      <rect x="22" y="8" width="30" height="2" rx="1" fill="#334155"/>
+                      <rect x="25" y="4" width="12" height="5" rx="1.5" fill="#f59e0b" stroke="#d97706" stroke-width="0.8"/>
+                      <rect x="39" y="5" width="11" height="4" rx="1.5" fill="#0284c7" stroke="#0369a1" stroke-width="0.8"/>
+                      <!-- Body -->
+                      <path d="M12 28L15 18C16 15 18 11 23 11H49C53 11 57 14 60 18L66 23C69 24 71 26 71 29V32C71 33.5 70 34.5 68.5 34.5H65A6.5 6.5 0 0 1 52 34.5H28A6.5 6.5 0 0 1 15 34.5H11.5C10 34.5 9 33.5 9 32V29C9 27.5 10 26.5 12 28Z" fill="#0d9488" stroke="#115e59" stroke-width="1.5"/>
+                      <!-- Windows -->
+                      <path d="M24 13.5H35V22H17.5L22 15C22.5 14 23.2 13.5 24 13.5Z" fill="#e0f2fe" opacity="0.95"/>
+                      <path d="M38 13.5H48C51 13.5 53.5 15.5 55.5 18.5L58 22H38V13.5Z" fill="#e0f2fe" opacity="0.95"/>
+                      <line x1="36.5" y1="13.5" x2="36.5" y2="22" stroke="#0f766e" stroke-width="1.5"/>
+                      <line x1="26" y1="14" x2="33" y2="21" stroke="#ffffff" stroke-width="1" stroke-linecap="round" opacity="0.85"/>
+                      <line x1="42" y1="14" x2="52" y2="21" stroke="#ffffff" stroke-width="1" stroke-linecap="round" opacity="0.85"/>
+                      <!-- Door accent & handles -->
+                      <path d="M12 24H68" stroke="#ccfbf1" stroke-width="1.2" opacity="0.8"/>
+                      <rect x="31" y="24.5" width="4" height="1.5" rx="0.75" fill="#134e4a"/>
+                      <rect x="44" y="24.5" width="4" height="1.5" rx="0.75" fill="#134e4a"/>
+                      <!-- Headlight & Taillight -->
+                      <path d="M68 25L71 27V30L68 30Z" fill="#fef08a" stroke="#ca8a04" stroke-width="0.8"/>
+                      <rect x="9" y="26" width="2" height="4" rx="1" fill="#ef4444"/>
+                    </g>
+                    <!-- Wheels with spinning rims -->
+                    <g class="wipe-car__wheel wipe-car__wheel--back" transform="translate(21.5, 34.5)">
+                      <circle cx="0" cy="0" r="6" fill="#1e293b"/>
+                      <circle cx="0" cy="0" r="3.2" fill="#94a3b8"/>
+                      <circle cx="0" cy="0" r="1.2" fill="#0f172a"/>
+                      <line x1="-3" y1="0" x2="3" y2="0" stroke="#f8fafc" stroke-width="0.8"/>
+                      <line x1="0" y1="-3" x2="0" y2="3" stroke="#f8fafc" stroke-width="0.8"/>
+                    </g>
+                    <g class="wipe-car__wheel wipe-car__wheel--front" transform="translate(58.5, 34.5)">
+                      <circle cx="0" cy="0" r="6" fill="#1e293b"/>
+                      <circle cx="0" cy="0" r="3.2" fill="#94a3b8"/>
+                      <circle cx="0" cy="0" r="1.2" fill="#0f172a"/>
+                      <line x1="-3" y1="0" x2="3" y2="0" stroke="#f8fafc" stroke-width="0.8"/>
+                      <line x1="0" y1="-3" x2="0" y2="3" stroke="#f8fafc" stroke-width="0.8"/>
+                    </g>
+                  </svg>
+                  <span class="wipe-car__smoke">💨</span>
+                </span>
+              </span>
+              <span class="wipe-text" id="wipeText">Guided Tours &amp; Journeys</span>
+            </span>
+          </h2>
           <p class="home-section__lead">Led by licensed local tour guides, certified drivers, and authentic pandit
             guides who ensure comfort, devotion, and discovery every mile.</p>
         </div>
-        <div class="home-carousel__nav">
-          <button type="button" class="home-carousel__arrow" data-carousel-prev aria-label="Previous tours">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M15 18l-6-6 6-6" />
-            </svg>
-          </button>
-          <button type="button" class="home-carousel__arrow" data-carousel-next aria-label="Next tours">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M9 18l6-6-6-6" />
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <div class="tour-mobile-hint" id="tourMobileHint" aria-hidden="true">
-        <span>👈 Swipe right or left to explore all 20 tours 👉</span>
       </div>
 
       <div class="tour-slider-wrapper">
@@ -2223,30 +2262,29 @@
     <section class="home-section tripper-container home-section--tint" id="cars">
       <div class="home-section__head">
         <div>
-          <span class="tripper-eyebrow">Get Around Seamlessly</span>
-          <h2 class="home-section__title">Cabs &amp; Fleet for Local &amp; All-India Trips</h2>
-          <p class="home-section__lead">Clean sanitized cars, polite experienced drivers, transparent pricing with no
-            hidden charges. Station transfers, temple tours, and outstation holiday cabs.</p>
+          <span class="tripper-eyebrow">Cars, Bikes &amp; Scooters on Rent</span>
+          <h2 class="home-section__title">Rent Cars, Bikes &amp; Scooters – Travel Anywhere You Want</h2>
+          <p class="home-section__lead">Car, bike ya scooter rent par lijiye aur azaadi se jahan chahein wahan ghoomiye!<br>Clean sanitized cars, automatic scooters &amp; touring bikes with verified drivers or self-drive flexibility.</p>
         </div>
-        <button class="tripper-btn tripper-btn--outline" onclick="openBookingModal('Cab Inquiry')">Direct Cab Call:
+        <button class="tripper-btn tripper-btn--outline" onclick="openBookingModal('Car, Bike &amp; Scooter Rental Inquiry')">Direct Rental Call:
           8144684608</button>
       </div>
 
       <div class="car-tabs">
         <button class="car-tab is-active" data-filter="all" type="button">All Fleet</button>
-        <button class="car-tab" data-filter="suv" type="button">SUV (Innova / Ertiga)</button>
-        <button class="car-tab" data-filter="sedan" type="button">Sedan (Dzire / Etios)</button>
+        <button class="car-tab" data-filter="car" type="button">Car</button>
+        <button class="car-tab" data-filter="bike" type="button">Bike</button>
+        <button class="car-tab" data-filter="scooter" type="button">Scooter</button>
         <button class="car-tab" data-filter="tempo" type="button">Tempo Traveller (17/26)</button>
-        <button class="car-tab" data-filter="bus" type="button">Tourist Bus / Coach</button>
       </div>
 
       <div class="car-grid">
         <!-- Car 1: Innova Crysta -->
-        <div class="car-grid__item" data-cat="suv">
+        <div class="car-grid__item" data-cat="car suv">
           <article class="car-card">
             <div class="car-card__media">
               <img class="car-card__img"
-                src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80"
+                src="assets/images/innova.jpg"
                 alt="Toyota Innova Crysta Cab" loading="lazy">
               <span class="car-card__badge">Most Popular</span>
             </div>
@@ -2290,11 +2328,11 @@
         </div>
 
         <!-- Car 2: Maruti Dzire -->
-        <div class="car-grid__item" data-cat="sedan">
+        <div class="car-grid__item" data-cat="car sedan">
           <article class="car-card">
             <div class="car-card__media">
               <img class="car-card__img"
-                src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=600&q=80"
+                src="assets/images/dzire.jpg"
                 alt="Maruti Suzuki Dzire Sedan" loading="lazy">
               <span class="car-card__badge" style="background:#00b8a9;">Budget Friendly</span>
             </div>
@@ -2337,12 +2375,234 @@
           </article>
         </div>
 
-        <!-- Car 3: Tempo Traveller -->
+        <!-- Car 3: Maruti Ertiga -->
+        <div class="car-grid__item" data-cat="car suv">
+          <article class="car-card">
+            <div class="car-card__media">
+              <img class="car-card__img"
+                src="assets/images/ertiga.jpg"
+                alt="Maruti Suzuki Ertiga 7-Seater" loading="lazy">
+              <span class="car-card__badge" style="background:#2563eb;">Family Favorite</span>
+            </div>
+            <div class="car-card__body">
+              <div class="car-card__row1">
+                <h3 class="car-card__name"><a href="#cars" data-book data-title="Maruti Suzuki Ertiga AC">Maruti Suzuki Ertiga AC</a></h3>
+                <span class="car-card__rate">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  4.8
+                </span>
+              </div>
+              <div class="car-card__feat">
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg> Dual AC</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /></svg> 7 Seater</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg> 3 Luggage Bags</span>
+              </div>
+              <div class="car-card__foot">
+                <div class="car-card__price">₹12 <span>/ km or ₹2,400/day</span></div>
+                <button class="car-card__book" data-book data-title="Maruti Ertiga Rental" data-price="₹12/km">
+                  <span>Book Cab</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Scooter 1: Honda Activa 6G -->
+        <div class="car-grid__item" data-cat="scooter two-wheeler">
+          <article class="car-card">
+            <div class="car-card__media">
+              <img class="car-card__img"
+                src="assets/images/activa.jpg"
+                alt="Honda Activa Automatic Scooter" loading="lazy">
+              <span class="car-card__badge" style="background:#0d9488;">Top Self-Drive Scooter</span>
+            </div>
+            <div class="car-card__body">
+              <div class="car-card__row1">
+                <h3 class="car-card__name"><a href="#cars" data-book data-title="Honda Activa 6G Scooter Hire">Honda Activa 6G (Automatic)</a></h3>
+                <span class="car-card__rate">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  4.9
+                </span>
+              </div>
+              <div class="car-card__feat">
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg> 110cc Auto</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /></svg> 2 Helmets</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg> Underseat Storage</span>
+              </div>
+              <div class="car-card__foot">
+                <div class="car-card__price">₹399 <span>/ day</span></div>
+                <button class="car-card__book" data-book data-title="Honda Activa 6G Scooter Rental" data-price="₹399/day">
+                  <span>Rent Scooter</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Scooter 2: TVS Jupiter 125 -->
+        <div class="car-grid__item" data-cat="scooter two-wheeler">
+          <article class="car-card">
+            <div class="car-card__media">
+              <img class="car-card__img"
+                src="assets/images/jupiter.jpg"
+                alt="TVS Jupiter 125 Scooter" loading="lazy">
+              <span class="car-card__badge" style="background:#059669;">Extra Comfort</span>
+            </div>
+            <div class="car-card__body">
+              <div class="car-card__row1">
+                <h3 class="car-card__name"><a href="#cars" data-book data-title="TVS Jupiter 125 Scooter Hire">TVS Jupiter 125</a></h3>
+                <span class="car-card__rate">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  4.8
+                </span>
+              </div>
+              <div class="car-card__feat">
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg> 125cc EcoThrust</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /></svg> 2 Helmets</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg> Big 33L Boot</span>
+              </div>
+              <div class="car-card__foot">
+                <div class="car-card__price">₹449 <span>/ day</span></div>
+                <button class="car-card__book" data-book data-title="TVS Jupiter 125 Scooter Rental" data-price="₹449/day">
+                  <span>Rent Scooter</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Scooter 3: Suzuki Access 125 -->
+        <div class="car-grid__item" data-cat="scooter two-wheeler">
+          <article class="car-card">
+            <div class="car-card__media">
+              <img class="car-card__img"
+                src="assets/images/access125.jpg"
+                alt="Suzuki Access 125 Scooter Rental" loading="lazy">
+              <span class="car-card__badge" style="background:#0284c7;">Puri Beach Special</span>
+            </div>
+            <div class="car-card__body">
+              <div class="car-card__row1">
+                <h3 class="car-card__name"><a href="#cars" data-book data-title="Suzuki Access 125 Scooter Hire">Suzuki Access 125 (Special Edition)</a></h3>
+                <span class="car-card__rate">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  4.9
+                </span>
+              </div>
+              <div class="car-card__feat">
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg> 125cc SEP Engine</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /></svg> 2 Helmets</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg> USB Mobile Charger</span>
+              </div>
+              <div class="car-card__foot">
+                <div class="car-card__price">₹449 <span>/ day</span></div>
+                <button class="car-card__book" data-book data-title="Suzuki Access 125 Scooter Rental" data-price="₹449/day">
+                  <span>Rent Scooter</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Bike 1: Royal Enfield Classic 350 -->
+        <div class="car-grid__item" data-cat="bike two-wheeler">
+          <article class="car-card">
+            <div class="car-card__media">
+              <img class="car-card__img"
+                src="assets/images/classic350.jpg"
+                alt="Royal Enfield Classic 350 Bullet" loading="lazy">
+              <span class="car-card__badge" style="background:#b45309;">Beach &amp; Highway Cruiser</span>
+            </div>
+            <div class="car-card__body">
+              <div class="car-card__row1">
+                <h3 class="car-card__name"><a href="#cars" data-book data-title="Royal Enfield Classic 350 Hire">Royal Enfield Classic 350</a></h3>
+                <span class="car-card__rate">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  4.9
+                </span>
+              </div>
+              <div class="car-card__feat">
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg> 350cc Classic</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /></svg> Premium Helmets</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg> Marine Drive Special</span>
+              </div>
+              <div class="car-card__foot">
+                <div class="car-card__price">₹899 <span>/ day</span></div>
+                <button class="car-card__book" data-book data-title="Royal Enfield Classic 350 Rental" data-price="₹899/day">
+                  <span>Rent Bike</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Bike 2: Yamaha FZ-S FI 150 -->
+        <div class="car-grid__item" data-cat="bike two-wheeler">
+          <article class="car-card">
+            <div class="car-card__media">
+              <img class="car-card__img"
+                src="https://images.unsplash.com/photo-1558981420-87aa9dad1c89?auto=format&fit=crop&w=600&q=80"
+                alt="Yamaha FZ-S Touring Bike" loading="lazy">
+              <span class="car-card__badge" style="background:#7c3aed;">Touring Special</span>
+            </div>
+            <div class="car-card__body">
+              <div class="car-card__row1">
+                <h3 class="car-card__name"><a href="#cars" data-book data-title="Yamaha FZ-S FI 150cc Hire">Yamaha FZ-S FI 150cc</a></h3>
+                <span class="car-card__rate">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  4.8
+                </span>
+              </div>
+              <div class="car-card__feat">
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg> 150cc FI Engine</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /></svg> 2 Helmets</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg> Disc Brakes + ABS</span>
+              </div>
+              <div class="car-card__foot">
+                <div class="car-card__price">₹599 <span>/ day</span></div>
+                <button class="car-card__book" data-book data-title="Yamaha FZ-S Rental" data-price="₹599/day">
+                  <span>Rent Bike</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Car 4: Tempo Traveller -->
         <div class="car-grid__item" data-cat="tempo">
           <article class="car-card">
             <div class="car-card__media">
               <img class="car-card__img"
-                src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=600&q=80"
+                src="assets/images/tempo.jpg"
                 alt="Luxury Tempo Traveller" loading="lazy">
               <span class="car-card__badge" style="background:#e59819;">Group Special</span>
             </div>
@@ -2386,278 +2646,294 @@
           </article>
         </div>
       </div>
+
+      <!-- View All Fleet Page Button -->
+      <div class="fleet-view-more">
+        <a href="fleet.html" class="fleet-view-btn" id="viewFleetPageBtn" title="View Full Fleet & Rental Options">
+          <span>View All Fleet &amp; Rental Rates</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" width="20" height="20">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+      </div>
     </section>
 
-    <!-- ==================== EXPERIENCES & DAY TRIPS ==================== -->
+    <!-- ==================== EXPERIENCES & DAY TRIPS (CHAR DHAM 4 TEMPLES CAROUSEL) ==================== -->
     <section class="home-section tripper-container" id="experiences">
-      <div class="home-section__head">
+      <div class="home-section__head exp-section-head">
         <div>
-          <span class="tripper-eyebrow">Sacred &amp; Cultural Immersion</span>
-          <h2 class="home-section__title">Unique Things to Do &amp; Experiences</h2>
-          <p class="home-section__lead">Bookable activities with dedicated local assistance, skip-the-line privileges,
-            and timings worked out for smooth travel.</p>
+          <span class="tripper-eyebrow">Sacred &amp; Cultural Immersion • India's 4 Holy Dhams</span>
+          
+          <!-- Long Auto-Running Marquee Heading (Left to Right) -->
+          <div class="exp-marquee-wrap" aria-label="Sacred All India Char Dham Yatra Experiences">
+            <div class="exp-marquee-track">
+              <div class="exp-marquee-content">
+                <h2 class="exp-marquee-title">
+                  ALL INDIA SACRED CHAR DHAM YATRA <span class="exp-marquee-sep">✦</span> <span class="exp-marquee-accent">1ST SHREE JAGANNATHA TEMPLE PURI</span> <span class="exp-marquee-sep">✦</span> <span class="exp-marquee-accent">2ND SHRI BADARINATH DHAM</span> <span class="exp-marquee-sep">✦</span> <span class="exp-marquee-accent">3RD SRI ARULMIGU RAMANATHASWAMY TEMPLE</span> <span class="exp-marquee-sep">✦</span> <span class="exp-marquee-accent">4TH DWARKADHISH TEMPLE</span> <span class="exp-marquee-sep">✦</span> COMPLETE HOLY PILGRIMAGE DARSHAN EXPERIENCES
+                </h2>
+                <span class="exp-marquee-star" aria-hidden="true">✦</span>
+              </div>
+              <div class="exp-marquee-content" aria-hidden="true">
+                <span class="exp-marquee-title">
+                  ALL INDIA SACRED CHAR DHAM YATRA <span class="exp-marquee-sep">✦</span> <span class="exp-marquee-accent">1ST SHREE JAGANNATHA TEMPLE PURI</span> <span class="exp-marquee-sep">✦</span> <span class="exp-marquee-accent">2ND SHRI BADARINATH DHAM</span> <span class="exp-marquee-sep">✦</span> <span class="exp-marquee-accent">3RD SRI ARULMIGU RAMANATHASWAMY TEMPLE</span> <span class="exp-marquee-sep">✦</span> <span class="exp-marquee-accent">4TH DWARKADHISH TEMPLE</span> <span class="exp-marquee-sep">✦</span> COMPLETE HOLY PILGRIMAGE DARSHAN EXPERIENCES
+                </span>
+                <span class="exp-marquee-star">✦</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="home-section__lead">Bookable pilgrimage packages to all 4 sacred Dhams of Sanatan Dharma with dedicated panda assistance, comfortable AC transport &amp; priority darshan.</p>
         </div>
       </div>
 
-      <div class="exp-grid">
-        <!-- Exp 1: Puri Darshan -->
-        <article class="exp-card">
-          <div class="exp-card__media">
-            <img class="exp-card__img"
-              src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
-              alt="Jagannath Temple Darshan" loading="lazy">
-            <div class="exp-card__tags">
-              <span class="exp-card__tag">Puri Headline</span>
-              <span class="exp-card__tag exp-card__tag--sale">-20%</span>
-            </div>
-          </div>
-          <div class="exp-card__body">
-            <span class="exp-card__kind">Temple Darshan Experience</span>
-            <h3 class="exp-card__title">
-              <a href="#experiences" data-book data-title="Puri Jagannath Temple VIP Darshan & Mahaprasad">Puri
-                Jagannath Temple VIP Darshan &amp; Sacred Mahaprasad</a>
-            </h3>
-            <div class="exp-card__meta">
-              <span class="exp-card__rate"><svg viewBox="0 0 24 24" fill="currentColor">
-                  <polygon
-                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                </svg> 5.0</span>
-              <span>·</span>
-              <span>3 to 4 hours</span>
-            </div>
-            <div class="exp-card__pills">
-              <span class="exp-card__pill">Licensed Panda Guide</span>
-              <span class="exp-card__pill">Mahaprasad Bhog Included</span>
-              <span class="exp-card__pill">Hotel Pickup</span>
-            </div>
-            <p class="exp-card__desc">Complete peaceful darshan of Lord Jagannath, Balabhadra and Subhadra with an
-              authorized traditional panda, followed by sacred 56-bhog Anandabazar experience.</p>
-            <ul class="exp-card__feats">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg> No hassle entry assistance</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg> Authentic hot Mahaprasad earthen pot meal</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg> Detailed spiritual folklore explanation</li>
-            </ul>
-            <div class="exp-card__foot">
-              <div class="exp-card__price">
-                <s>₹999</s>
-                <span class="exp-card__amount">₹799</span>
-                <em>per person</em>
-              </div>
-              <span class="exp-card__freec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg> Free Cancel</span>
-            </div>
-            <button class="tripper-btn tripper-btn--primary exp-card__cta" data-book
-              data-title="Puri Jagannath VIP Darshan" data-price="₹799/person">Book Darshan</button>
-          </div>
-        </article>
+      <!-- Carousel Wrapper -->
+      <div class="exp-carousel-wrapper" id="expCarouselWrapper">
+        <div class="exp-carousel-viewport">
+          <div class="exp-carousel-track" id="expCarouselTrack">
 
-        <!-- Exp 2: Chilika Lake Boat Safari -->
-        <article class="exp-card">
-          <div class="exp-card__media">
-            <img class="exp-card__img"
-              src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=600&q=80"
-              alt="Chilika Lake Boating" loading="lazy">
-            <div class="exp-card__tags">
-              <span class="exp-card__tag">Nature &amp; Wildlife</span>
-            </div>
-          </div>
-          <div class="exp-card__body">
-            <span class="exp-card__kind">Day Excursion</span>
-            <h3 class="exp-card__title">
-              <a href="#experiences" data-book data-title="Chilika Lake Dolphin Watching & Sea Mouth Safari">Chilika
-                Lake Dolphin Watching &amp; Sea Mouth Boat Safari</a>
-            </h3>
-            <div class="exp-card__meta">
-              <span class="exp-card__rate"><svg viewBox="0 0 24 24" fill="currentColor">
-                  <polygon
-                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                </svg> 4.9</span>
-              <span>·</span>
-              <span>5 hours</span>
-            </div>
-            <div class="exp-card__pills">
-              <span class="exp-card__pill">Private Motorboat</span>
-              <span class="exp-card__pill">Dolphin Spotting</span>
-              <span class="exp-card__pill">Sea Island Stop</span>
-            </div>
-            <p class="exp-card__desc">Cruise Asia's largest brackish lagoon at Satapada. Spot playful Irrawaddy dolphins
-              and visit the scenic island where Chilika merges into the Bay of Bengal.</p>
-            <ul class="exp-card__feats">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg> Lifejackets and experienced local boatman</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg> Fresh red crab &amp; seafood market visit</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg> Kalijai Temple / Rajhans Island visit</li>
-            </ul>
-            <div class="exp-card__foot">
-              <div class="exp-card__price">
-                <s>₹1,600</s>
-                <span class="exp-card__amount">₹1,200</span>
-                <em>per boat (up to 6)</em>
+            <!-- Card 1: Shree Jagannatha Temple Puri -->
+            <article class="exp-card exp-carousel__item" data-dham-index="0">
+              <div class="exp-card__media">
+                <img class="exp-card__img" src="assets/images/jagannath_dham_puri.jpg" alt="Shree Jagannatha Temple Puri" loading="lazy">
+                <div class="exp-card__tags">
+                  <span class="exp-card__tag">Char Dham • East (Odisha)</span>
+                  <span class="exp-card__tag exp-card__tag--sale">Popular</span>
+                </div>
               </div>
-              <span class="exp-card__freec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg> Free Cancel</span>
-            </div>
-            <button class="tripper-btn tripper-btn--primary exp-card__cta" data-book
-              data-title="Chilika Lake Dolphin Safari" data-price="₹1,200/boat">Book Safari</button>
-          </div>
-        </article>
+              <div class="exp-card__body">
+                <span class="exp-card__kind">Sacred Char Dham Darshan</span>
+                <h3 class="exp-card__title">
+                  <a href="#experiences" data-book data-title="Shree Jagannatha Temple Puri VIP Darshan">Shree Jagannatha Temple Puri</a>
+                </h3>
+                <div class="exp-card__meta">
+                  <span class="exp-card__rate">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg> 5.0
+                  </span>
+                  <span>·</span>
+                  <span>3 to 4 hours</span>
+                </div>
+                <div class="exp-card__pills">
+                  <span class="exp-card__pill">12th Century Sanctum</span>
+                  <span class="exp-card__pill">56 Bhog Mahaprasad</span>
+                  <span class="exp-card__pill">Golden Beach</span>
+                </div>
+                <p class="exp-card__desc">Divine eastern Char Dham of Mahaprabhu Jagannath, Balabhadra &amp; Subhadra. Blessed with the 214 ft Nilachakra flag, miraculous Anandabazar, and holy Mahodadhi coast.</p>
+                <ul class="exp-card__feats">
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" /></svg>
+                    Simhadwara sea-sound vanishing miracle
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" /></svg>
+                    Authentic hot Mahaprasad in stacked earthen pots
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" /></svg>
+                    Licensed Panda guide &amp; hassle-free temple entry
+                  </li>
+                </ul>
+                <div class="exp-card__foot">
+                  <div class="exp-card__price">
+                    <s>₹999</s>
+                    <span class="exp-card__amount">₹799</span>
+                    <em>per person</em>
+                  </div>
+                  <span class="exp-card__freec">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12" /></svg>
+                    Free Cancel
+                  </span>
+                </div>
+                <button class="tripper-btn tripper-btn--primary exp-card__cta" data-book data-title="Shree Jagannatha Temple Puri Darshan" data-price="₹799/person">Book Darshan</button>
+              </div>
+            </article>
 
-        <!-- Exp 3: Konark Sun Temple -->
-        <article class="exp-card">
-          <div class="exp-card__media">
-            <img class="exp-card__img"
-              src="https://images.unsplash.com/photo-1609137144813-7d9921338f24?auto=format&fit=crop&w=600&q=80"
-              alt="Konark Sun Temple Architecture" loading="lazy">
-            <div class="exp-card__tags">
-              <span class="exp-card__tag">UNESCO Heritage</span>
-            </div>
-          </div>
-          <div class="exp-card__body">
-            <span class="exp-card__kind">Heritage &amp; Sunset Walk</span>
-            <h3 class="exp-card__title">
-              <a href="#experiences" data-book data-title="Konark Sun Temple & Chandrabhaga Sunset Tour">Konark Sun
-                Temple Architectural Tour &amp; Chandrabhaga Sunset</a>
-            </h3>
-            <div class="exp-card__meta">
-              <span class="exp-card__rate"><svg viewBox="0 0 24 24" fill="currentColor">
-                  <polygon
-                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                </svg> 4.8</span>
-              <span>·</span>
-              <span>4 hours</span>
-            </div>
-            <div class="exp-card__pills">
-              <span class="exp-card__pill">Govt Approved Guide</span>
-              <span class="exp-card__pill">Golden Beach Sunset</span>
-              <span class="exp-card__pill">Marine Drive Drive</span>
-            </div>
-            <p class="exp-card__desc">Marvel at the 13th-century Black Pagoda chariot with 24 carved stone wheels,
-              followed by golden sunset at Blue Flag certified Chandrabhaga beach.</p>
-            <ul class="exp-card__feats">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg> Sun dials &amp; astronomical engineering secrets</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg> Scenic coastal drive on Puri-Konark Marine Drive</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg> Light &amp; Sound show evening ticket assistance</li>
-            </ul>
-            <div class="exp-card__foot">
-              <div class="exp-card__price">
-                <s>₹850</s>
-                <span class="exp-card__amount">₹650</span>
-                <em>per person</em>
+            <!-- Card 2: Shri Badarinath Dham -->
+            <article class="exp-card exp-carousel__item" data-dham-index="1">
+              <div class="exp-card__media">
+                <img class="exp-card__img" src="assets/images/badrinath_temple.jpg" alt="Shri Badarinath Dham" loading="lazy">
+                <div class="exp-card__tags">
+                  <span class="exp-card__tag">Char Dham • North (Uttarakhand)</span>
+                </div>
               </div>
-              <span class="exp-card__freec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg> Free Cancel</span>
-            </div>
-            <button class="tripper-btn tripper-btn--primary exp-card__cta" data-book
-              data-title="Konark Sun Temple Guided Tour" data-price="₹650/person">Book Experience</button>
+              <div class="exp-card__body">
+                <span class="exp-card__kind">Himalayan Char Dham Yatra</span>
+                <h3 class="exp-card__title">
+                  <a href="#experiences" data-book data-title="Shri Badarinath Dham Yatra">Shri Badarinath Dham</a>
+                </h3>
+                <div class="exp-card__meta">
+                  <span class="exp-card__rate">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg> 5.0
+                  </span>
+                  <span>·</span>
+                  <span>Full Day Yatra</span>
+                </div>
+                <div class="exp-card__pills">
+                  <span class="exp-card__pill">Garhwal Himalayas</span>
+                  <span class="exp-card__pill">Alaknanda River</span>
+                  <span class="exp-card__pill">Neelkanth Peak</span>
+                </div>
+                <p class="exp-card__desc">Sacred northern Char Dham of Lord Badri Vishal at 10,279 ft between Nar &amp; Narayana mountains on the banks of holy Alaknanda.</p>
+                <ul class="exp-card__feats">
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" /></svg>
+                    Sacred dip in natural thermal Tapt Kund
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" /></svg>
+                    Brahma Kapal holy ancestor moksha rituals
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" /></svg>
+                    Experienced mountain driver &amp; VIP darshan assistance
+                  </li>
+                </ul>
+                <div class="exp-card__foot">
+                  <div class="exp-card__price">
+                    <s>₹2,999</s>
+                    <span class="exp-card__amount">₹2,499</span>
+                    <em>per person</em>
+                  </div>
+                  <span class="exp-card__freec">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12" /></svg>
+                    Free Cancel
+                  </span>
+                </div>
+                <button class="tripper-btn tripper-btn--primary exp-card__cta" data-book data-title="Shri Badarinath Dham Yatra" data-price="₹2,499/person">Book Yatra</button>
+              </div>
+            </article>
+
+            <!-- Card 3: Sri Arulmigu Ramanathaswamy Temple -->
+            <article class="exp-card exp-carousel__item" data-dham-index="2">
+              <div class="exp-card__media">
+                <img class="exp-card__img" src="assets/images/ramanathaswamy_temple.jpg" alt="Sri Arulmigu Ramanathaswamy Temple Rameswaram" loading="lazy">
+                <div class="exp-card__tags">
+                  <span class="exp-card__tag">Char Dham • South (Tamil Nadu)</span>
+                </div>
+              </div>
+              <div class="exp-card__body">
+                <span class="exp-card__kind">Island Jyotirlinga &amp; Theertham</span>
+                <h3 class="exp-card__title">
+                  <a href="#experiences" data-book data-title="Sri Arulmigu Ramanathaswamy Temple Darshan">Sri Arulmigu Ramanathaswamy Temple</a>
+                </h3>
+                <div class="exp-card__meta">
+                  <span class="exp-card__rate">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg> 4.9
+                  </span>
+                  <span>·</span>
+                  <span>4 to 5 hours</span>
+                </div>
+                <div class="exp-card__pills">
+                  <span class="exp-card__pill">12 Jyotirlinga</span>
+                  <span class="exp-card__pill">22 Holy Theerthams</span>
+                  <span class="exp-card__pill">1,212 Pillar Corridor</span>
+                </div>
+                <p class="exp-card__desc">Sacred southern Char Dham &amp; holy Jyotirlinga on Rameswaram Island where Lord Rama consecrated Lord Shiva before returning to Ayodhya.</p>
+                <ul class="exp-card__feats">
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" /></svg>
+                    World's longest 1,212 carved stone pillar corridor
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" /></svg>
+                    Holy snan at all 22 ancient temple Theertham wells
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" /></svg>
+                    Agni Theertham sea bath &amp; temple entry pass
+                  </li>
+                </ul>
+                <div class="exp-card__foot">
+                  <div class="exp-card__price">
+                    <s>₹2,299</s>
+                    <span class="exp-card__amount">₹1,899</span>
+                    <em>per person</em>
+                  </div>
+                  <span class="exp-card__freec">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12" /></svg>
+                    Free Cancel
+                  </span>
+                </div>
+                <button class="tripper-btn tripper-btn--primary exp-card__cta" data-book data-title="Sri Arulmigu Ramanathaswamy Temple Darshan" data-price="₹1,899/person">Book Darshan</button>
+              </div>
+            </article>
+
+            <!-- Card 4: Dwarkadhish Temple -->
+            <article class="exp-card exp-carousel__item" data-dham-index="3">
+              <div class="exp-card__media">
+                <img class="exp-card__img" src="assets/images/dwarkadhish_temple.jpg" alt="Dwarkadhish Temple Dwarka" loading="lazy">
+                <div class="exp-card__tags">
+                  <span class="exp-card__tag">Char Dham • West (Gujarat)</span>
+                </div>
+              </div>
+              <div class="exp-card__body">
+                <span class="exp-card__kind">Mokshapuri Krishna Yatra</span>
+                <h3 class="exp-card__title">
+                  <a href="#experiences" data-book data-title="Dwarkadhish Temple Darshan">Dwarkadhish Temple</a>
+                </h3>
+                <div class="exp-card__meta">
+                  <span class="exp-card__rate">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg> 4.9
+                  </span>
+                  <span>·</span>
+                  <span>4 to 5 hours</span>
+                </div>
+                <div class="exp-card__pills">
+                  <span class="exp-card__pill">Jagat Mandir</span>
+                  <span class="exp-card__pill">52-Yard Dhwaja</span>
+                  <span class="exp-card__pill">Gomti Sangam</span>
+                </div>
+                <p class="exp-card__desc">Sacred western Char Dham known as Jagat Mandir on the Arabian Sea coast, the legendary ancient golden kingdom of Lord Krishna.</p>
+                <ul class="exp-card__feats">
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" /></svg>
+                    Miraculous 52-yard sacred flag changing ritual
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" /></svg>
+                    Holy Gomti Ghat snan &amp; Sangam ocean confluence
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" /></svg>
+                    Bet Dwarka island boat excursion &amp; Nageshwar darshan
+                  </li>
+                </ul>
+                <div class="exp-card__foot">
+                  <div class="exp-card__price">
+                    <s>₹1,999</s>
+                    <span class="exp-card__amount">₹1,599</span>
+                    <em>per person</em>
+                  </div>
+                  <span class="exp-card__freec">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12" /></svg>
+                    Free Cancel
+                  </span>
+                </div>
+                <button class="tripper-btn tripper-btn--primary exp-card__cta" data-book data-title="Dwarkadhish Temple Darshan" data-price="₹1,599/person">Book Darshan</button>
+              </div>
+            </article>
+
           </div>
-        </article>
+        </div>
+
+        <!-- Carousel Dots Indicator -->
+        <div class="exp-carousel__dots" id="expCarouselDots">
+          <button class="exp-carousel__dot is-active" data-index="0" aria-label="1st Dham: Shree Jagannatha Temple Puri"></button>
+          <button class="exp-carousel__dot" data-index="1" aria-label="2nd Dham: Shri Badarinath Dham"></button>
+          <button class="exp-carousel__dot" data-index="2" aria-label="3rd Dham: Sri Arulmigu Ramanathaswamy Temple"></button>
+          <button class="exp-carousel__dot" data-index="3" aria-label="4th Dham: Dwarkadhish Temple"></button>
+        </div>
       </div>
     </section>
 
-    <!-- ==================== WHY BOOK HERE (tp-block) ==================== -->
-    <section class="home-section tripper-container home-section--tint" id="why-us">
-      <div class="home-section__head" style="text-align:center; display:block; margin-bottom:44px;">
-        <span class="tripper-eyebrow">Why Travel With Us</span>
-        <h2 class="home-section__title">The Maa Dakhinakali Travel Promise</h2>
-        <p class="home-section__lead" style="margin-inline:auto;">Experience transparent, dependable hospitality rooted
-          in Odishan ethos with round-the-clock ground support.</p>
-      </div>
 
-      <div class="tp-values">
-        <div class="tp-vcard">
-          <div class="tp-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-            </svg>
-          </div>
-          <h3>Zero Advance Payment Required</h3>
-          <p>Book your tour, cab, or room with complete peace of mind. Pay securely upon arrival or post-trip
-            completion.</p>
-        </div>
-
-        <div class="tp-vcard">
-          <div class="tp-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-              <circle cx="12" cy="10" r="3" />
-            </svg>
-          </div>
-          <h3>Local on the Ground at Puri Ocean Front</h3>
-          <p>Our office is located right by the Puri Lighthouse. Real people, trusted pandits, and verified chauffeurs
-            waiting to welcome you.</p>
-        </div>
-
-        <div class="tp-vcard">
-          <div class="tp-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polygon
-                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-            </svg>
-          </div>
-          <h3>Customized All-India Packages</h3>
-          <p>From sacred Char Dham &amp; Kashi Yatra to honeymoon holidays in Kashmir &amp; Kerala, every itinerary is
-            tailored to your taste.</p>
-        </div>
-
-        <div class="tp-vcard">
-          <div class="tp-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path
-                d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9C2.1 11 2 11.5 2 12v4c0 .6.4 1 1 1h2" />
-              <circle cx="7" cy="17" r="2" />
-              <path d="M9 17h6" />
-              <circle cx="17" cy="17" r="2" />
-            </svg>
-          </div>
-          <h3>Fleet of Modern Sanitized Cabs</h3>
-          <p>From sedans and Innovas to luxury Tempo Travellers and AC buses. Clean, air-conditioned, with commercial
-            permits.</p>
-        </div>
-
-        <div class="tp-vcard">
-          <div class="tp-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10" />
-              <path d="M12 6v6l4 2" />
-            </svg>
-          </div>
-          <h3>24/7 Dedicated Support</h3>
-          <p>Immediate assistance via Call and WhatsApp on +91 8144684608 throughout your trip, day or night.</p>
-        </div>
-
-        <div class="tp-vcard">
-          <div class="tp-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-              <polyline points="22 4 12 14.01 9 11.01" />
-            </svg>
-          </div>
-          <h3>Free &amp; Flexible Cancellation</h3>
-          <p>Life happens! Reschedule your dates or cancel without penalties up to 24 hours prior to travel
-            commencement.</p>
-        </div>
-      </div>
-    </section>
 
     <!-- ==================== PROOF / STATS (home-proof) ==================== -->
     <section class="home-proof" id="proof">
@@ -2711,12 +2987,28 @@
             </span>
           </p>
 
-          <a class="tripper-btn tripper-btn--primary" style="width:fit-content;" href="#contact">
-            <span>Contact Our Puri Team</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M13 6l6 6-6 6" />
-            </svg>
-          </a>
+          <!-- Long Hold-to-Call Interactive Button (Left to Right Fill) -->
+          <div class="hold-call-btn-wrap">
+            <button type="button" class="hold-call-btn" id="holdCallPuriBtn" aria-label="Hold to call our Puri Team">
+              <span class="hold-call-btn__progress" id="holdCallProgress"></span>
+              <span class="hold-call-btn__inner">
+                <span class="hold-call-btn__icon-box">
+                  <svg class="hold-call-icon-phone" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-2.2 2.2a15.05 15.05 0 0 1-6.59-6.59l2.2-2.21a.96.96 0 0 0 .25-1A11.36 11.36 0 0 1 8.57 3.9c0-.55-.45-1-1-1H4.01c-.55 0-1 .45-1 1 0 9.39 7.63 17.02 17 17.02.55 0 1-.45 1-1v-3.54c0-.55-.45-1-1-1z"/>
+                  </svg>
+                  <svg class="hold-call-icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
+                </span>
+                <span class="hold-call-btn__text">
+                  <strong class="hold-call-btn__title" id="holdCallBtnTitle">Contact Our Puri Team</strong>
+                  <span class="hold-call-btn__hint" id="holdCallBtnHint">Press &amp; Hold to Connect Call</span>
+                </span>
+                <span class="hold-call-btn__badge">Direct Call</span>
+              </span>
+            </button>
+            <span class="hold-call-subtext">Instant connection to Puri Head Office (+91 8144684608)</span>
+          </div>
         </div>
       </div>
     </section>

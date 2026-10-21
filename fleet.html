@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Fleet, Car &amp; Bike Rentals | Maa Dakhinakali Tour &amp; Travels Puri</title>
+  <meta name="description"
+    content="Book verified cabs, sedans, SUVs, luxury tempo travellers, touring bikes, and automatic scooters in Puri &amp; Odisha at best daily and per-km rates with Maa Dakhinakali Tour &amp; Travels.">
+  <meta name="keywords" content="Car Rental Puri, Bike Rent Puri, Scooter Rent Puri, Activa Rent Puri, Cab Service Puri, Tempo Traveller Puri, Innova Crysta Puri">
+
+  <!-- Favicon & Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
+    rel="stylesheet">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    .fleet-hero {
+      position: relative;
+      background: linear-gradient(135deg, #052e2b 0%, #083344 50%, #0f172a 100%);
+      color: #fff;
+      padding: 90px 20px 60px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .fleet-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 30%, rgba(0, 184, 169, 0.22), transparent 70%);
+      pointer-events: none;
+    }
+    .fleet-hero__wrap {
+      position: relative;
+      max-width: 860px;
+      margin: 0 auto;
+      z-index: 1;
+    }
+    .fleet-hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      background: rgba(0, 184, 169, 0.16);
+      border: 1px solid rgba(0, 184, 169, 0.4);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #5eead4;
+      margin-bottom: 18px;
+    }
+    .fleet-hero__title {
+      font-family: var(--tripper-font-heading, inherit);
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.18;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+    .fleet-hero__lead {
+      font-size: 1.08rem;
+      color: #cbd5e1;
+      max-width: 680px;
+      margin: 0 auto 30px;
+      line-height: 1.6;
+    }
+    .fleet-hero__tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+    .fleet-hero__tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #f1f5f9;
+      backdrop-filter: blur(8px);
+    }
+    .fleet-hero__tag svg {
+      width: 15px;
+      height: 15px;
+      color: #2dd4bf;
+    }
+    .fleet-section-wrap {
+      padding-block: 50px 70px;
+    }
+    .fleet-policy-box {
+      background: #f8fafc;
+      border: 1px solid var(--tripper-color-border);
+      border-radius: var(--tripper-radius-lg);
+      padding: 36px 30px;
+      margin-top: 50px;
+    }
+    body.dark-theme .fleet-policy-box {
+      background: #0f172a;
+      border-color: #334155;
+    }
+    .fleet-policy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+    .fleet-policy-item {
+      display: flex;
+      gap: 14px;
+    }
+    .fleet-policy-item__icon {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(0, 184, 169, 0.12);
+      color: var(--tripper-color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .fleet-policy-item__icon svg {
+      width: 22px;
+      height: 22px;
+    }
+    .fleet-policy-item__title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .fleet-policy-item__desc {
+      font-size: 0.85rem;
+      color: var(--tripper-color-text-muted);
+      line-height: 1.45;
+    }
+    .fleet-cta-banner {
+      background: linear-gradient(135deg, #00b8a9 0%, #0d9488 100%);
+      border-radius: var(--tripper-radius-lg);
+      padding: 40px 30px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 50px;
+      box-shadow: 0 12px 30px rgba(0, 184, 169, 0.28);
+    }
+    .fleet-cta-banner__title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .fleet-cta-banner__lead {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    .fleet-cta-banner__actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .fleet-cta-banner__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      color: #0f766e;
+      font-weight: 700;
+      padding: 12px 24px;
+      border-radius: 999px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .fleet-cta-banner__btn:hover {
+      background: #f0fdfa;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+
+<body id="page">
+  <!-- Top Bar -->
+  <aside class="site-topbar" aria-label="Quick Contacts">
+    <div class="site-topbar__inner tripper-container">
+      <div class="site-topbar__left">
+        <a class="site-topbar__item" href="tel:+918144684608">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          <span>+91 8144684608</span>
+        </a>
+        <span class="site-topbar__sep">•</span>
+        <span class="site-topbar__item">Puri, Odisha, India</span>
+      </div>
+      <div class="site-topbar__right">
+        <a class="soc soc--wa" href="https://wa.me/918144684608" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.52 3.48A11.93 11.93 0 0 0 12.04 0C5.43 0 .07 5.37.07 11.98c0 2.11.55 4.17 1.6 5.99L0 24l6.21-1.63a11.97 11.97 0 0 0 5.83 1.51h.01c6.61 0 11.97-5.37 11.97-11.98 0-3.2-.1.25-1.25-6.42zM12.04 21.87h-.01a9.92 9.92 0 0 1-5.06-1.39l-.36-.22-3.76.99 1-3.66-.24-.38a9.94 9.94 0 0 1-1.52-5.23c0-5.5 4.47-9.97 9.97-9.97 2.66 0 5.17 1.04 7.05 2.92a9.94 9.94 0 0 1 2.92 7.05c0 5.5-4.47 9.97-9.97 9.97zm5.46-7.46c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.67-2.08-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.25-.58-.5-.5-.68-.51h-.58c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5s1.07 2.9 1.22 3.1c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z" />
+          </svg>
+        </a>
+        <button class="topbar-theme-toggle" id="themeToggle" type="button" aria-label="Toggle Dark / Light Mode">
+          <span class="theme-toggle__track">
+            <span class="theme-toggle__icon theme-toggle__icon--sun">☀️</span>
+            <span class="theme-toggle__knob"></span>
+            <span class="theme-toggle__icon theme-toggle__icon--moon">🌙</span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Header -->
+  <header class="site-header" id="masthead">
+    <div class="site-header__inner tripper-container">
+      <a class="site-branding" href="index.html" title="Maa Dakhinakali Tour and Travels">
+        <div class="site-branding__logo-wrap">
+          <img class="site-branding__logo-img" src="assets/images/logo.png" alt="Maa Dakhinakali Logo">
+        </div>
+        <div class="site-branding__text">
+          <span class="site-branding__title">Maa Dakhinakali</span>
+          <span class="site-branding__tagline">Tour and Travels</span>
+        </div>
+      </a>
+      <nav class="main-navigation" id="site-navigation" aria-label="Primary Navigation">
+        <ul class="primary-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#tours">Tours Package</a></li>
+          <li class="current"><a href="fleet.html">Cars &amp; Bike Rentals</a></li>
+          <li><a href="index.html#destinations">Destinations</a></li>
+          <li><a href="index.html#experiences">Experiences</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__cta">
+        <a class="tripper-btn tripper-btn--primary" href="tel:+918144684608">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="16" height="16">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          <span>Call 8144684608</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Header -->
+  <section class="fleet-hero">
+    <div class="fleet-hero__wrap">
+      <span class="fleet-hero__badge">🚗 Maa Dakhinakali Fleet &amp; Rentals</span>
+      <h1 class="fleet-hero__title">Cars, Bikes &amp; Scooters on Rent in Puri</h1>
+      <p class="fleet-hero__lead">Verified clean cars, automatic scooters, touring bikes &amp; luxury Tempo Travellers<br>for Puri temple darshan, Marine Drive, Konark Sun Temple, Chilika Lake, and all-India journeys.</p>
+      <div class="fleet-hero__tags">
+        <span class="fleet-hero__tag">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Zero Hidden Charges
+        </span>
+        <span class="fleet-hero__tag">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Self-Drive &amp; With Driver
+        </span>
+        <span class="fleet-hero__tag">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Free Helmets on Two-Wheelers
+        </span>
+        <span class="fleet-hero__tag">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          24/7 Roadside Assistance
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Fleet Grid Section -->
+  <main class="fleet-section-wrap tripper-container">
+    <!-- Filter Tabs -->
+    <div class="car-tabs">
+      <button class="car-tab is-active" data-filter="all" type="button">All Fleet</button>
+      <button class="car-tab" data-filter="car" type="button">Car</button>
+      <button class="car-tab" data-filter="bike" type="button">Bike</button>
+      <button class="car-tab" data-filter="scooter" type="button">Scooter</button>
+      <button class="car-tab" data-filter="tempo" type="button">Tempo Traveller (17/26)</button>
+    </div>
+
+    <!-- 9 Vehicles Grid -->
+    <div class="car-grid">
+      <!-- 1: Innova Crysta -->
+      <div class="car-grid__item" data-cat="car suv">
+        <article class="car-card">
+          <div class="car-card__media">
+            <img class="car-card__img" src="assets/images/innova.jpg" alt="Toyota Innova Crysta Cab" loading="lazy">
+            <span class="car-card__badge">Most Popular</span>
+          </div>
+          <div class="car-card__body">
+            <div class="car-card__row1">
+              <h3 class="car-card__name"><a href="tel:+918144684608" data-book data-title="Toyota Innova Crysta Hire">Toyota Innova Crysta AC</a></h3>
+              <span class="car-card__rate"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 4.9</span>
+            </div>
+            <div class="car-card__feat">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Climate AC</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 7 Seater</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg> 4 Bags</span>
+            </div>
+            <div class="car-card__foot">
+              <div class="car-card__price">₹14 <span>/ km or ₹2,800/day</span></div>
+              <button class="car-card__book" data-book data-title="Toyota Innova Crysta Rental" data-price="₹14/km">
+                <span>Book Cab</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- 2: Maruti Dzire -->
+      <div class="car-grid__item" data-cat="car sedan">
+        <article class="car-card">
+          <div class="car-card__media">
+            <img class="car-card__img" src="assets/images/dzire.jpg" alt="Maruti Suzuki Dzire Sedan" loading="lazy">
+            <span class="car-card__badge" style="background:#00b8a9;">Budget Friendly</span>
+          </div>
+          <div class="car-card__body">
+            <div class="car-card__row1">
+              <h3 class="car-card__name"><a href="tel:+918144684608" data-book data-title="Maruti Suzuki Dzire AC">Maruti Suzuki Dzire AC</a></h3>
+              <span class="car-card__rate"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 4.8</span>
+            </div>
+            <div class="car-card__feat">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Chilled AC</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 4 Seater</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg> 2 Bags</span>
+            </div>
+            <div class="car-card__foot">
+              <div class="car-card__price">₹10 <span>/ km or ₹1,900/day</span></div>
+              <button class="car-card__book" data-book data-title="Maruti Suzuki Dzire Rental" data-price="₹10/km">
+                <span>Book Cab</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- 3: Maruti Ertiga -->
+      <div class="car-grid__item" data-cat="car suv">
+        <article class="car-card">
+          <div class="car-card__media">
+            <img class="car-card__img" src="assets/images/ertiga.jpg" alt="Maruti Suzuki Ertiga 7-Seater" loading="lazy">
+            <span class="car-card__badge" style="background:#2563eb;">Family Favorite</span>
+          </div>
+          <div class="car-card__body">
+            <div class="car-card__row1">
+              <h3 class="car-card__name"><a href="tel:+918144684608" data-book data-title="Maruti Suzuki Ertiga AC">Maruti Suzuki Ertiga AC</a></h3>
+              <span class="car-card__rate"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 4.8</span>
+            </div>
+            <div class="car-card__feat">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Dual AC</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 7 Seater</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg> 3 Bags</span>
+            </div>
+            <div class="car-card__foot">
+              <div class="car-card__price">₹12 <span>/ km or ₹2,400/day</span></div>
+              <button class="car-card__book" data-book data-title="Maruti Ertiga Rental" data-price="₹12/km">
+                <span>Book Cab</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- 4: Honda Activa 6G -->
+      <div class="car-grid__item" data-cat="scooter two-wheeler">
+        <article class="car-card">
+          <div class="car-card__media">
+            <img class="car-card__img" src="assets/images/activa.jpg" alt="Honda Activa Automatic Scooter" loading="lazy">
+            <span class="car-card__badge" style="background:#0d9488;">Top Self-Drive Scooter</span>
+          </div>
+          <div class="car-card__body">
+            <div class="car-card__row1">
+              <h3 class="car-card__name"><a href="tel:+918144684608" data-book data-title="Honda Activa 6G Scooter Hire">Honda Activa 6G (Automatic)</a></h3>
+              <span class="car-card__rate"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 4.9</span>
+            </div>
+            <div class="car-card__feat">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 110cc Auto</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 2 Helmets</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg> Boot Space</span>
+            </div>
+            <div class="car-card__foot">
+              <div class="car-card__price">₹399 <span>/ day</span></div>
+              <button class="car-card__book" data-book data-title="Honda Activa 6G Scooter Rental" data-price="₹399/day">
+                <span>Rent Scooter</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- 5: TVS Jupiter 125 -->
+      <div class="car-grid__item" data-cat="scooter two-wheeler">
+        <article class="car-card">
+          <div class="car-card__media">
+            <img class="car-card__img" src="assets/images/jupiter.jpg" alt="TVS Jupiter 125 Scooter" loading="lazy">
+            <span class="car-card__badge" style="background:#059669;">Extra Comfort</span>
+          </div>
+          <div class="car-card__body">
+            <div class="car-card__row1">
+              <h3 class="car-card__name"><a href="tel:+918144684608" data-book data-title="TVS Jupiter 125 Scooter Hire">TVS Jupiter 125</a></h3>
+              <span class="car-card__rate"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 4.8</span>
+            </div>
+            <div class="car-card__feat">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 125cc Eco</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 2 Helmets</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg> 33L Boot</span>
+            </div>
+            <div class="car-card__foot">
+              <div class="car-card__price">₹449 <span>/ day</span></div>
+              <button class="car-card__book" data-book data-title="TVS Jupiter 125 Scooter Rental" data-price="₹449/day">
+                <span>Rent Scooter</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- 6: Suzuki Access 125 -->
+      <div class="car-grid__item" data-cat="scooter two-wheeler">
+        <article class="car-card">
+          <div class="car-card__media">
+            <img class="car-card__img" src="assets/images/access125.jpg" alt="Suzuki Access 125 Scooter" loading="lazy">
+            <span class="car-card__badge" style="background:#0284c7;">Puri Beach Special</span>
+          </div>
+          <div class="car-card__body">
+            <div class="car-card__row1">
+              <h3 class="car-card__name"><a href="tel:+918144684608" data-book data-title="Suzuki Access 125 Scooter Hire">Suzuki Access 125</a></h3>
+              <span class="car-card__rate"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 4.9</span>
+            </div>
+            <div class="car-card__feat">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 125cc SEP</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 2 Helmets</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg> USB Charger</span>
+            </div>
+            <div class="car-card__foot">
+              <div class="car-card__price">₹449 <span>/ day</span></div>
+              <button class="car-card__book" data-book data-title="Suzuki Access 125 Scooter Rental" data-price="₹449/day">
+                <span>Rent Scooter</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- 7: Royal Enfield Classic 350 -->
+      <div class="car-grid__item" data-cat="bike two-wheeler">
+        <article class="car-card">
+          <div class="car-card__media">
+            <img class="car-card__img" src="assets/images/classic350.jpg" alt="Royal Enfield Classic 350 Bullet" loading="lazy">
+            <span class="car-card__badge" style="background:#b45309;">Beach &amp; Highway Cruiser</span>
+          </div>
+          <div class="car-card__body">
+            <div class="car-card__row1">
+              <h3 class="car-card__name"><a href="tel:+918144684608" data-book data-title="Royal Enfield Classic 350 Hire">Royal Enfield Classic 350</a></h3>
+              <span class="car-card__rate"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 4.9</span>
+            </div>
+            <div class="car-card__feat">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 350cc Classic</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 2 Helmets</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg> Marine Drive</span>
+            </div>
+            <div class="car-card__foot">
+              <div class="car-card__price">₹899 <span>/ day</span></div>
+              <button class="car-card__book" data-book data-title="Royal Enfield Classic 350 Rental" data-price="₹899/day">
+                <span>Rent Bike</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- 8: Yamaha FZ-S FI 150 -->
+      <div class="car-grid__item" data-cat="bike two-wheeler">
+        <article class="car-card">
+          <div class="car-card__media">
+            <img class="car-card__img" src="https://images.unsplash.com/photo-1558981420-87aa9dad1c89?auto=format&fit=crop&w=600&q=80" alt="Yamaha FZ-S Touring Bike" loading="lazy">
+            <span class="car-card__badge" style="background:#7c3aed;">Touring Special</span>
+          </div>
+          <div class="car-card__body">
+            <div class="car-card__row1">
+              <h3 class="car-card__name"><a href="tel:+918144684608" data-book data-title="Yamaha FZ-S FI 150cc Hire">Yamaha FZ-S FI 150cc</a></h3>
+              <span class="car-card__rate"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 4.8</span>
+            </div>
+            <div class="car-card__feat">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 150cc FI</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 2 Helmets</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg> Disc ABS</span>
+            </div>
+            <div class="car-card__foot">
+              <div class="car-card__price">₹599 <span>/ day</span></div>
+              <button class="car-card__book" data-book data-title="Yamaha FZ-S Rental" data-price="₹599/day">
+                <span>Rent Bike</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- 9: Tempo Traveller -->
+      <div class="car-grid__item" data-cat="tempo">
+        <article class="car-card">
+          <div class="car-card__media">
+            <img class="car-card__img" src="assets/images/tempo.jpg" alt="Luxury Tempo Traveller" loading="lazy">
+            <span class="car-card__badge" style="background:#e59819;">Group Special</span>
+          </div>
+          <div class="car-card__body">
+            <div class="car-card__row1">
+              <h3 class="car-card__name"><a href="tel:+918144684608" data-book data-title="Tempo Traveller 17/26 Seater">Force Tempo Traveller AC</a></h3>
+              <span class="car-card__rate"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 4.9</span>
+            </div>
+            <div class="car-card__feat">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Dual AC</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 17 or 26 Seater</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg> Recliner</span>
+            </div>
+            <div class="car-card__foot">
+              <div class="car-card__price">₹22 <span>/ km</span></div>
+              <button class="car-card__book" data-book data-title="Tempo Traveller 17/26 Seater Rental" data-price="₹22/km">
+                <span>Book Cab</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Rental Policies & Inclusions -->
+    <div class="fleet-policy-box">
+      <h2 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 8px;">Rental Guidelines &amp; Policies</h2>
+      <p style="color: var(--tripper-color-text-muted); font-size: 0.92rem;">Everything is transparent and straightforward so you can enjoy your ride hassle-free.</p>
+      
+      <div class="fleet-policy-grid">
+        <div class="fleet-policy-item">
+          <div class="fleet-policy-item__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="7" y1="8" x2="17" y2="8"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="7" y1="16" x2="11" y2="16"/></svg>
+          </div>
+          <div>
+            <h4 class="fleet-policy-item__title">Valid ID &amp; License</h4>
+            <p class="fleet-policy-item__desc">Original Driving License and Aadhar Card required at vehicle handover for verification.</p>
+          </div>
+        </div>
+
+        <div class="fleet-policy-item">
+          <div class="fleet-policy-item__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <div>
+            <h4 class="fleet-policy-item__title">Flexible Rental Hours</h4>
+            <p class="fleet-policy-item__desc">24-hour cycle billing. Early morning pickup and doorstep hotel delivery available on request.</p>
+          </div>
+        </div>
+
+        <div class="fleet-policy-item">
+          <div class="fleet-policy-item__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <h4 class="fleet-policy-item__title">2 Sanitized Helmets Free</h4>
+            <p class="fleet-policy-item__desc">All bike and scooter rentals include 2 certified safety helmets free for rider and pillion.</p>
+          </div>
+        </div>
+
+        <div class="fleet-policy-item">
+          <div class="fleet-policy-item__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <h4 class="fleet-policy-item__title">24/7 Breakdown Support</h4>
+            <p class="fleet-policy-item__desc">Dedicated local on-road mechanical and towing support across Puri, Konark &amp; Bhubaneswar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Direct Rental CTA Banner -->
+    <div class="fleet-cta-banner">
+      <div>
+        <h3 class="fleet-cta-banner__title">Looking for Customized Rental or Bulk Booking?</h3>
+        <p class="fleet-cta-banner__lead">Call our 24/7 Puri rental desk directly or drop a message on WhatsApp for instant booking confirmation.</p>
+      </div>
+      <div class="fleet-cta-banner__actions">
+        <a href="tel:+918144684608" class="fleet-cta-banner__btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18" height="18"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>Call 8144684608</span>
+        </a>
+        <a href="https://wa.me/918144684608?text=Namaste%20Maa%20Dakhinakali%20Travels!%20I%20want%20to%20rent%20a%20car/bike/scooter%20in%20Puri." target="_blank" rel="noopener" class="fleet-cta-banner__btn" style="background:#25d366; color:#fff;">
+          <span>WhatsApp Inquiry</span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer" id="contact">
+    <div class="tripper-container">
+
+      <!-- Newsletter Box -->
+      <div class="site-footer__newsletter">
+        <div class="site-footer__news-copy">
+          <span class="site-footer__news-eyebrow">Stay Inspired</span>
+          <h3>Get Special Puri Darshan Updates &amp; Seasonal Tour Discounts</h3>
+        </div>
+        <form class="site-footer__news-form" data-subscribe-form>
+          <input type="email" id="footer-subscribe" placeholder="Enter your email address" required>
+          <button type="submit" class="tripper-btn tripper-btn--primary">Subscribe</button>
+        </form>
+      </div>
+
+      <!-- Main Footer Columns -->
+      <div class="site-footer__main">
+        <!-- Col 1: Brand & Bio -->
+        <div class="site-footer__brand">
+          <a class="site-branding" href="index.html#page" title="Maa Dakhinakali Tour and Travels">
+            <div class="site-branding__logo-wrap">
+              <img class="site-branding__logo-img" src="assets/images/logo.png"
+                alt="Maa Dakhinakali Tour and Travels Logo">
+            </div>
+            <div class="site-branding__text">
+              <span class="site-branding__title" style="color:#fff;">Maa Dakhinakali</span>
+              <span class="site-branding__tagline" style="color:var(--tripper-color-primary);">Tour and Travels</span>
+            </div>
+          </a>
+          <p class="site-footer__blurb">Premier tour operator &amp; cab service provider based at Puri Ocean Front.
+            Crafting blissful spiritual yatra, scenic holidays, and premium car hire across all states of India.</p>
+
+          <div class="site-footer__social">
+            <a class="soc" href="https://facebook.com/maadakhinakalitourandtravel" target="_blank" rel="noopener"
+              aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg>
+            </a>
+            <a class="soc" href="https://instagram.com/maadakhinakalitourandtravel" target="_blank" rel="noopener"
+              aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+              </svg>
+            </a>
+            <a class="soc soc--yt" href="https://youtube.com/@maadakhinakalitourandtravel" target="_blank" rel="noopener"
+              aria-label="YouTube" title="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+            </a>
+            <a class="soc" href="https://wa.me/918144684608" target="_blank" rel="noopener" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M20.52 3.48A11.93 11.93 0 0 0 12.04 0C5.43 0 .07 5.37.07 11.98c0 2.11.55 4.17 1.6 5.99L0 24l6.21-1.63a11.97 11.97 0 0 0 5.83 1.51h.01c6.61 0 11.97-5.37 11.97-11.98 0-3.2-.1.25-1.25-6.42zM12.04 21.87h-.01a9.92 9.92 0 0 1-5.06-1.39l-.36-.22-3.76.99 1-3.66-.24-.38a9.94 9.94 0 0 1-1.52-5.23c0-5.5 4.47-9.97 9.97-9.97 2.66 0 5.17 1.04 7.05 2.92a9.94 9.94 0 0 1 2.92 7.05c0 5.5-4.47 9.97-9.97 9.97zm5.46-7.46c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.67-2.08-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.25-.58-.5-.5-.68-.51h-.58c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5s1.07 2.9 1.22 3.1c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2: Top Tours -->
+        <div class="site-footer__col">
+          <h4>Popular Tours</h4>
+          <ul class="flinks">
+            <li><a href="index.html#tours" data-book data-title="Puri - Konark - Chilika Tour">Puri Konark Golden Triangle</a>
+            </li>
+            <li><a href="index.html#tours" data-book data-title="Kashmir 6D/5N Holiday">Kashmir Valley &amp; Gulmarg</a></li>
+            <li><a href="index.html#tours" data-book data-title="Kerala Backwaters Tour">Kerala Munnar &amp; Alleppey</a></li>
+            <li><a href="index.html#tours" data-book data-title="Rajasthan Royal Tour">Royal Rajasthan Heritage</a></li>
+            <li><a href="index.html#tours" data-book data-title="Himachal Manali Tour">Himachal &amp; Manali Peaks</a></li>
+            <li><a href="index.html#tours" data-book data-title="Char Dham Yatra Package">Char Dham Yatra Tour</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Services -->
+        <div class="site-footer__col">
+          <h4>Services &amp; Cabs</h4>
+          <ul class="flinks">
+            <li><a href="index.html#cars" data-book data-title="Innova Crysta Rental">Toyota Innova Crysta Hire</a></li>
+            <li><a href="index.html#cars" data-book data-title="Dzire AC Cab Hire">Maruti Dzire Airport Pickup</a></li>
+            <li><a href="index.html#cars" data-book data-title="Tempo Traveller Rental">Tempo Traveller Group Hire</a></li>
+            <li><a href="index.html#hotels">Puri Beachfront Hotels</a></li>
+            <li><a href="index.html#experiences" data-book data-title="Puri VIP Darshan">Jagannath Temple VIP Darshan</a></li>
+            <li><a href="index.html#experiences" data-book data-title="Chilika Dolphin Tour">Chilika Lake Boat Safari</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Contact Info (Exact User Specifications) -->
+        <div class="site-footer__col site-footer__contact">
+          <h4>Office &amp; Contact</h4>
+          <div class="site-footer__contact-line">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            <span><strong>Address:</strong> Fortune, Back Side of Light house, puri Ocean front, Baliapanda Housing
+              Board Colony, Puri, Odisha 752001</span>
+          </div>
+
+          <div class="site-footer__contact-line">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+            <span><strong>Call / Phone:</strong> <a href="tel:8144684608">+91 8144684608</a></span>
+          </div>
+
+          <div class="site-footer__contact-line">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            <span><strong>Email:</strong> <a
+                href="mailto:support@maadakhinakalitourandtravel.com">support@maadakhinakalitourandtravel.com</a></span>
+          </div>
+
+          <div class="site-footer__contact-line">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M20.52 3.48A11.93 11.93 0 0 0 12.04 0C5.43 0 .07 5.37.07 11.98c0 2.11.55 4.17 1.6 5.99L0 24l6.21-1.63a11.97 11.97 0 0 0 5.83 1.51h.01c6.61 0 11.97-5.37 11.97-11.98 0-3.2-.1.25-1.25-6.42zM12.04 21.87h-.01a9.92 9.92 0 0 1-5.06-1.39l-.36-.22-3.76.99 1-3.66-.24-.38a9.94 9.94 0 0 1-1.52-5.23c0-5.5 4.47-9.97 9.97-9.97 2.66 0 5.17 1.04 7.05 2.92a9.94 9.94 0 0 1 2.92 7.05c0 5.5-4.47 9.97-9.97 9.97zm5.46-7.46c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.67-2.08-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.25-.58-.5-.5-.68-.51h-.58c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5s1.07 2.9 1.22 3.1c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z" />
+            </svg>
+            <span><strong>WhatsApp:</strong> <a href="https://wa.me/918144684608" target="_blank" rel="noopener">Chat
+                with Us (+91 8144684608)</a></span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Copyright -->
+      <div class="site-footer__bottom">
+        <span>&copy; 2026 Maa Dakhinakali Tour and Travels. All rights reserved.</span>
+        <span>Registered Tour &amp; Travel Operator, Puri, Odisha, India.</span>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+
+</html>
